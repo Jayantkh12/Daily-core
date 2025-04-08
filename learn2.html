@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Styled Card Slider on Hover</title>
+  <style>
+    /* Main container styling */
+    .main {
+      max-width: 75rem;
+      padding: 3em 1.5em;
+      margin: auto;
+    }
+
+    .main_heading {
+      font-weight: 600;
+      font-size: 2.25em;
+      margin-bottom: 0.75em;
+      text-align: center;
+      color: #eceff1;
+    }
+
+    .cards {
+      position: relative;
+    }
+
+    .cards_inner {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2.5em;
+    }
+
+    .overlay .cta {
+      display: block;
+      grid-row: 1;
+      width: 100%;
+      background-color: hsl(var(--hsl));
+      box-shadow: 0 0 0 1px hsl(var(--hsl));
+    }
+
+    /* Card styling */
+    .card {
+      --flow-space: 0.5em;
+      --hsl: var(--hue), var(--saturation), var(--lightness);
+      flex: 1 1 14rem;
+      padding: 1.5em 2em;
+      gap: 1.25em;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      align-items: start;
+      color: #eceff1;
+      background-color: transparent;
+      border: 1px solid #fff;
+      border-radius: 15px;
+      overflow: hidden;
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Image slider effect on hover */
+    .card .slider-container {
+      display: flex;
+      transition: transform 0.5s ease;
+    }
+
+    .card:hover .slider-container {
+      transform: translateX(-100px); /* Slide effect */
+    }
+
+    .slider-container img {
+      width: 100px;
+      height: 100px;
+      margin-right: 10px;
+      border-radius: 10px;
+      transition: transform 0.3s ease;
+    }
+
+    .slider-container img:hover {
+      transform: scale(1.1);
+    }
+
+    .card:nth-child(1) {
+      --hue: 165;
+      --saturation: 82.26%;
+      --lightness: 51.37%;
+      background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+    }
+
+    .card:nth-child(2) {
+      --hue: 291.34;
+      --saturation: 95.9%;
+      --lightness: 61.76%;
+      background-color: hsl(var(--hue), var(--saturation), var(--lightness));
+    }
+
+    /* Card content styling */
+    .content {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .title {
+      font-weight: 600;
+      font-size: 1.25rem;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<div class="main">
+  <h1 class="main_heading">Hover Image Slider Cards</h1>
+  <div class="cards_inner">
+    
+    <div class="card">
+      <div class="slider-container">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 1" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 2" class="slider-image">
+        <img src="img/e5256f_a0258ddf4ec546da8bb7f4378b0df80a~mv2.webp" alt="Image 3" class="slider-image">
+        <img src="img/e5256f_da0ef466ec0b435a83182dbbc4aabfe6~mv2.webp" alt="Image 4" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 1" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 2" class="slider-image">
+        <img src="img/e5256f_a0258ddf4ec546da8bb7f4378b0df80a~mv2.webp" alt="Image 3" class="slider-image">
+        <img src="img/e5256f_da0ef466ec0b435a83182dbbc4aabfe6~mv2.webp" alt="Image 4" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 1" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 2" class="slider-image">
+        <img src="img/e5256f_a0258ddf4ec546da8bb7f4378b0df80a~mv2.webp" alt="Image 3" class="slider-image">
+        <img src="img/e5256f_da0ef466ec0b435a83182dbbc4aabfe6~mv2.webp" alt="Image 4" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 1" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 2" class="slider-image">
+        <img src="img/e5256f_a0258ddf4ec546da8bb7f4378b0df80a~mv2.webp" alt="Image 3" class="slider-image">
+        <img src="img/e5256f_da0ef466ec0b435a83182dbbc4aabfe6~mv2.webp" alt="Image 4" class="slider-image">
+
+      </div>
+      <div class="content">
+        <h3 class="title">Card Title 1</h3>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="slider-container">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 1" class="slider-image">
+        <img src="img/e5256f_8b2098ef6abb4d95be7243d63b552d13~mv2.webp" alt="Image 2" class="slider-image">
+        <img src="img/e5256f_a0258ddf4ec546da8bb7f4378b0df80a~mv2.webp" alt="Image 3" class="slider-image">
+        <img src="img/e5256f_da0ef466ec0b435a83182dbbc4aabfe6~mv2.webp" alt="Image 4" class="slider-image">
+
+      </div>
+      <div class="content">
+        <h3 class="title">Card Title 2</h3>
+      </div>
+    </div>
+
+    <!-- Add more cards as needed -->
+
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Core</title>
+    <link rel="stylesheet" href="cart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="navbardiv">
+                <h1 class="logo"><a href="dailycore.html">DAILYCORE</a></h1>
+                <form>
+                    <input class="searchbar" type="text" placeholder="Search">
+                    <button class="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <ul>
+                    <li><a href="bestseller.html">Best Seller</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        
+        
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-column">
+                <div class="footer-heading">MENU</div>
+                <div class="footer-name">
+                    <a href="sale.html">Sale</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">POLICY</div>
+                <div class="footer-name">
+                    <a href="termsandcondition.html">Terms & Conditions</a>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="shippingpolicy.html">Shipping Policy</a>
+                    <a href="refund-policy.html">Refund Policy</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">INFO</div>
+                <div class="footer-name">
+                    <a href="mailto:jayantchoudhary2901@gamil.com">jayantchoudhary2901@gmail.com</a>
+                    <a href="tel:+917850078064">+91 7850078064</a>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jayant.choudhary_001/"><i
+                                class="fab fa-instagram"></i>jayant.choudhary_2901</a>
+                        <a href="#"><i class="fab fa-facebook"></i>Jayant Choudhary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="namelogo">
+                <div class="namephoto">
+                    <a href="dailycore.html">DAILYCORE</a>
+                </div>
+                
+            </div>
+        </div>
+        <div class="copyright">&copy;2024 All Rights Reserved.</div>
+    </footer>
+</body>
+<script>
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.querySelector('.dailycore').classList.add('active');
+        }, 300);
+
+    });
+    // Select the navbar element
+    const navbar = document.getElementById('navbar');
+
+    // Add a scroll event listener
+    window.addEventListener('scroll', () => {
+        // If the user has scrolled more than 50px, add the 'dark' class
+        if (window.scrollY > 50) {
+            navbar.classList.add('dark');
+        } else {
+            navbar.classList.remove('dark');
+        }
+    });
+</script>
+
+</html>

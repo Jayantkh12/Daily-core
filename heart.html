@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Core</title>
+    <link rel="stylesheet" href="heart.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="navbardiv">
+                <h1 class="logo"><a href="dailycore.html">DAILYCORE</a></h1>
+                <form class="searchbar-form">
+                    <input class="searchbar" type="text" placeholder="Search">
+                    <button class="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+
+                <ul>
+                    <li><a href="bestseller.html">Best Seller</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Browse by</h2>
+                <div class="sidebar-line"></div>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="bestseller.html">Best Sellers</a></li>
+                    <li><a href="face.html">Face</a></li>
+                    <li><a href="family.html">Family</a></li>
+                    <li><a href="heart.html">Heart</a></li>
+                    <li><a href="newin.html">New In</a></li>
+                    <li><a href="sale.html">Sale</a></li>
+                </ul>
+                <h2>Filter by</h2>
+                <div class="sidebar-line"></div>
+                <br>
+                <label for="price-range">Price</label>
+                <input type="range" id="price-range" min="250" max="4000" step="50" oninput="updatePriceLabel()">
+                <span class="price-label" id="price-label">₹250 - ₹4000</span>
+            </aside>
+        </div>
+        <div class="product-grid">
+            <h1>Heart</h1>
+            <div class="sort">
+              <label for="sort-options">Sort by:</label>
+              <select id="sort-options">
+                <option value="recommended">Recommended</option>
+                <option value="price-low-high">Price: Low to High</option>
+                <option value="price-high-low">Price: High to Low</option>
+              </select>
+            </div>
+      
+            <div class="products">
+              <div class="product-card" data-price="1700">
+                <img src="img/IMG-20241006-WA0112.jpg" alt="ALOE PEACHES" >
+                <div class="overlay-text">Quick View</div>
+                <h3>ALOE PEACHES</h3>
+                <p class="price">₹1700.00</p>
+                <button onclick="addToCart(1700)">Add to Cart</button>
+              </div>
+              <div class="product-card" data-price="1700">
+                <img src="img/e5256f_db5adf6472574a7c804563118b112c75~mv2.webp" alt="ALOE BERRY NECTAR" >
+                <div class="overlay-text">Quick View</div>
+                <h3>ALOE BERRY NECTAR</h3>
+                <p class="price">₹1700.00</p>
+                <button onclick="addToCart(1700)">Add to Cart</button>
+              </div>
+              <div class="product-card" data-price="1950">
+                <img src="img/IMG-20241006-WA0110.jpg" alt="ALOE VERA GEL-TRIPAK" >
+                <div class="overlay-text">Quick View</div>
+                <h3>ALOE VERA GEL-TRIPAK</h3>
+                <p class="price">₹1950.00</p>
+                <button onclick="addToCart(1950)">Add to Cart</button>
+              </div>
+              <div class="product-card" data-price="1700">
+                <img src="img/IMG-20241006-WA0111.jpg" alt="ALOE VERA GEL" >
+                <div class="overlay-text">Quick View</div>
+                <h3>ALOE VERA GEL</h3>
+                <p class="price">₹1700.00</p>
+                <button onclick="addToCart(1700)">Add to Cart</button>
+              </div>
+            </div>
+        </div>
+      
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-column">
+                <div class="footer-heading">MENU</div>
+                <div class="footer-name">
+                    <a href="sale.html">Sale</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">POLICY</div>
+                <div class="footer-name">
+                    <a href="termsandcondition.html">Terms & Conditions</a>
+                    <a href="privacypolicy.html">Privacy Policy</a>
+                    <a href="shippingpolicy.html">Shipping Policy</a>
+                    <a href="refund-policy.html">Refund Policy</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">INFO</div>
+                <div class="footer-name">
+                    <a href="mailto:jayantchoudhary2901@gamil.com">jayantchoudhary2901@gmail.com</a>
+                    <a href="tel:+917850078064">+91 7850078064</a>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jayant.choudhary_001/"><i
+                                class="fab fa-instagram"></i>jayant.choudhary_2901</a>
+                        <a href="#"><i class="fab fa-facebook"></i>Jayant Choudhary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="namelogo">
+                <div class="namephoto">
+                    <a href="dailycore.html">DAILYCORE</a>
+                </div>
+
+            </div>
+        </div>
+        <div class="copyright">&copy;2024 All Rights Reserved.</div>
+    </footer>
+</body>
+<script>
+    window.addEventListener('load', function () {
+        setTimeout(function () {
+            document.querySelector('.dailycore').classList.add('active');
+        }, 300);
+
+    });
+    // Select the navbar element
+    const navbar = document.getElementById('navbar');
+
+    // Add a scroll event listener
+    window.addEventListener('scroll', () => {
+        // If the user has scrolled more than 50px, add the 'dark' class
+        if (window.scrollY > 50) {
+            navbar.classList.add('dark');
+        } else {
+            navbar.classList.remove('dark');
+        }
+    });
+
+
+    // Update the price label as the slider moves and filter products
+    function updatePriceLabel() {
+      const priceRange = document.getElementById("price-range");
+      const priceLabel = document.getElementById("price-label");
+      priceLabel.textContent = `₹250 - ₹${priceRange.value}`;
+      filterProductsByPrice(priceRange.value);
+    }
+
+    // Filter products by price based on the slider
+    function filterProductsByPrice(maxPrice) {
+      const products = document.querySelectorAll(".product-card");
+      products.forEach((product) => {
+        const productPrice = parseInt(product.getAttribute("data-price"));
+        if (productPrice <= maxPrice) {
+          product.style.display = "block";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    // Add to Cart functionality
+    let cartCount = 0;
+    function addToCart(price) {
+      cartCount++;
+      alert(`Item added to cart. Total items: ${cartCount}`);
+    }
+
+    document.getElementById("sort-options").addEventListener("change", function () {
+    const sortOption = this.value;
+    sortProducts(sortOption);
+});
+
+function sortProducts(option) {
+    const productContainer = document.querySelector(".products");
+    const products = Array.from(productContainer.querySelectorAll(".product-card"));
+
+    products.sort((a, b) => {
+        const priceA = parseInt(a.getAttribute("data-price"));
+        const priceB = parseInt(b.getAttribute("data-price"));
+        const isRecommendedA = a.getAttribute("data-recommended") === "true";
+        const isRecommendedB = b.getAttribute("data-recommended") === "true";
+
+        if (option === "recommended") {
+            // Sort recommended items to the top, keep other order intact
+            return isRecommendedB - isRecommendedA;
+        } else if (option === "price-low-high") {
+            return priceA - priceB; // Sort from low to high
+        } else if (option === "price-high-low") {
+            return priceB - priceA; // Sort from high to low
+        } else {
+            return 0; // Default order
+        }
+    });
+
+    // Clear current products and append sorted products
+    productContainer.innerHTML = "";
+    products.forEach((product) => productContainer.appendChild(product));
+}
+
+</script>
+
+</html>

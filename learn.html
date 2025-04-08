@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="learn.css">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <!-- Close button -->
+            <a href="javascript:history.back()" class="close-btn">&times;</a>
+
+            <h1>Sign Up</h1>
+            <p>Already a member? <a href="#">Log In</a></p>
+
+            <button class="btn google-btn">Sign up with Google</button>
+            <button class="btn facebook-btn">Sign up with Facebook</button>
+
+            <div class="divider">or</div>
+
+            <button class="btn email-btn">Sign up with email</button>
+
+            <p class="note">Your profile will be set to public automatically when you sign up. You can change this later in your profile settings.</p>
+        </div>
+    </div>
+    <script>
+        document.querySelector('.google-btn').addEventListener('click', () => {
+            alert('Google sign-up clicked');
+        });
+
+        document.querySelector('.facebook-btn').addEventListener('click', () => {
+            alert('Facebook sign-up clicked');
+        });
+
+        document.querySelector('.email-btn').addEventListener('click', () => {
+            alert('Email sign-up clicked');
+        });
+    </script>
+</body>
+</html>
