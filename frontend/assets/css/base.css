@@ -267,3 +267,97 @@ footer {
   padding: 40px;
   font-size: 18px;
 }
+
+/* ── User Profile Dropdown ───────────────────────────────────────────────── */
+.user-profile-menu {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  margin: 0 10px;
+}
+
+.user-profile-trigger {
+  display: flex;
+  align-items: center;
+  color: var(--clr-text);
+  gap: 8px;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color var(--transition);
+  padding: 5px 10px;
+  border-radius: var(--radius-lg);
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.user-profile-trigger:hover {
+  color: var(--clr-brand-light);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.user-profile-trigger img {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid var(--clr-brand-light);
+}
+
+.user-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 45px;
+  background: var(--clr-surface);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  width: 170px;
+  z-index: 10000;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+.user-dropdown.show {
+  display: block;
+}
+
+.user-dropdown-header {
+  padding: 12px 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font-size: 12px;
+  color: var(--clr-text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-dropdown a {
+  display: flex !important;
+  align-items: center;
+  padding: 10px 15px !important;
+  color: var(--clr-text) !important;
+  text-decoration: none !important;
+  font-size: 14px !important;
+  font-weight: 500 !important;
+  transition: background var(--transition) !important;
+  margin: 0 !important;
+}
+
+.user-dropdown a::after {
+  display: none !important; /* disable hover underline from navbar style */
+}
+
+.user-dropdown a:hover {
+  background: rgba(255, 255, 255, 0.08) !important;
+  color: white !important;
+}
+
+.user-dropdown a.logout-btn {
+  color: var(--clr-accent) !important;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.user-dropdown a.logout-btn:hover {
+  background: rgba(255, 99, 71, 0.1) !important;
+}
+

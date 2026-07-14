@@ -1,4 +1,4 @@
-﻿/**
+/**
  * authRoutes.js — Auth API Routes
  */
 // const express = require('express');
@@ -7,6 +7,7 @@
 // 
 // router.post('/register', AuthController.register);
 // router.post('/login',    AuthController.login);
+// router.post('/google',   AuthController.googleLogin);
 // router.get('/me',        AuthController.getMe);
 // 
 // module.exports = router;

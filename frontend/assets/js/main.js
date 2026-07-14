@@ -83,3 +83,64 @@ function showNewsletterSuccess(form) {
   msg.textContent = '✓ Thank you for subscribing!';
   setTimeout(() => { if (msg) msg.remove(); }, 4000);
 }
+
+// ── User Session & Profile Dropdown ──────────────────────────────────────────
+(function initUserStatus() {
+  document.addEventListener('DOMContentLoaded', () => {
+    const userStr = localStorage.getItem('user');
+    if (!userStr) return;
+
+    let userData = null;
+    try {
+      userData = JSON.parse(userStr);
+    } catch(e) {
+      return;
+    }
+
+    if (!userData || !userData.name) return;
+
+    const loginLink = document.querySelector('.navbar .navbardiv ul li a[href*="login.html"]');
+    if (!loginLink) return;
+
+    const liParent = loginLink.parentElement;
+    liParent.className = 'user-profile-menu';
+    liParent.innerHTML = `
+      <span class="user-profile-trigger" id="profile-dropdown-trigger">
+        <img src="${userData.picture || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'}" alt="${userData.name}">
+        <span class="user-name">${userData.name.split(' ')[0]}</span>
+        <i class="fa-solid fa-caret-down" style="font-size:12px;"></i>
+      </span>
+      <div class="user-dropdown" id="profile-dropdown">
+        <div class="user-dropdown-header">${userData.email}</div>
+        <a href="#" class="logout-btn" id="nav-logout-btn">
+          <i class="fa-solid fa-right-from-bracket" style="margin-right:8px;"></i>Logout
+        </a>
+      </div>
+    `;
+
+    const trigger = liParent.querySelector('#profile-dropdown-trigger');
+    const dropdown = liParent.querySelector('#profile-dropdown');
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      dropdown.classList.toggle('show');
+    });
+
+    document.addEventListener('click', () => {
+      dropdown.classList.remove('show');
+    });
+
+    dropdown.addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
+
+    const logoutBtn = liParent.querySelector('#nav-logout-btn');
+    logoutBtn.addEventListener('click', (e) => {
+      e.preventDefault();
+      localStorage.removeItem('user');
+      localStorage.removeItem('token');
+      window.location.reload();
+    });
+  });
+})();
+

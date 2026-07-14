@@ -77,19 +77,72 @@ async function getSaleProducts() {
   return products.filter(p => p.isSale);
 }
 
-// ── Auth Services (stubs — wire to backend later) ─────────────────────────────
+// ── Auth Services (Simulated Local Database / Stub for Backend) ──────────────
+
+function getLocalUsers() {
+  const users = localStorage.getItem('users_db');
+  return users ? JSON.parse(users) : [];
+}
+
+function saveLocalUsers(users) {
+  localStorage.setItem('users_db', JSON.stringify(users));
+}
 
 async function loginUser(email, password) {
-  // TODO: return fetch(`${API_BASE_URL}/auth/login`, { method:'POST', body: JSON.stringify({email, password}), headers:{'Content-Type':'application/json'} }).then(r=>r.json());
-  console.warn('loginUser() — backend not yet connected');
-  return { success: false, message: 'Backend not connected' };
+  // If a backend url is active, you would fetch it here:
+  // return fetch(`${API_BASE_URL}/auth/login`, { ... })
+  
+  const users = getLocalUsers();
+  const user = users.find(u => u.email.toLowerCase() === email.toLowerCase());
+
+  if (user) {
+    if (user.password === password) {
+      const loggedInUser = {
+        name: user.name,
+        email: user.email,
+        picture: user.picture || ''
+      };
+      localStorage.setItem('user', JSON.stringify(loggedInUser));
+      localStorage.setItem('token', 'mock-jwt-token-' + Date.now());
+      return { success: true, user: loggedInUser };
+    } else {
+      return { success: false, message: 'Invalid password. Please try again.' };
+    }
+  }
+
+  return { success: false, message: 'Account not found. Please sign up first!' };
 }
 
 async function registerUser(name, email, password) {
-  // TODO: return fetch(`${API_BASE_URL}/auth/register`, { ... })
-  console.warn('registerUser() — backend not yet connected');
-  return { success: false, message: 'Backend not connected' };
+  const users = getLocalUsers();
+  const exists = users.some(u => u.email.toLowerCase() === email.toLowerCase());
+
+  if (exists) {
+    return { success: false, message: 'Email is already registered.' };
+  }
+
+  const newUser = {
+    name,
+    email,
+    password,
+    picture: '' // Default avatar
+  };
+
+  users.push(newUser);
+  saveLocalUsers(users);
+
+  // Automatically log in the user after registering
+  const loggedInUser = {
+    name: newUser.name,
+    email: newUser.email,
+    picture: newUser.picture
+  };
+  localStorage.setItem('user', JSON.stringify(loggedInUser));
+  localStorage.setItem('token', 'mock-jwt-token-' + Date.now());
+
+  return { success: true, user: loggedInUser };
 }
+
 
 // ── Order Services (stubs) ────────────────────────────────────────────────────
 

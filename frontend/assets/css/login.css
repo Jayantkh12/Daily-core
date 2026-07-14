@@ -1,41 +1,434 @@
-﻿/* login.css */
+/* ==========================================================================
+   login.css — Styling for Unified Login/Register & Google Auth Modal
+   ========================================================================== */
+
 body {
-  background-image:url('../public/images/dark%20purple.jpg');
-  background-size:cover; min-height:100vh;
-  display:flex; align-items:center; justify-content:center;
+  background-image: url('../../public/images/dark%20purple.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
-.container { display:flex; align-items:center; justify-content:center; width:100%; }
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+/* Glassmorphic Auth Card */
 .form-container {
-  background:rgba(255,255,255,.08);
-  backdrop-filter:blur(20px);
-  border:1px solid rgba(255,255,255,.15);
-  border-radius:15px; padding:40px;
-  width:380px; color:white; position:relative;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 400px;
+  color: white;
+  position: relative;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  animation: cardFadeIn 0.5s ease;
 }
+
+@keyframes cardFadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .close-btn {
-  position:absolute; top:14px; right:18px;
-  font-size:24px; color:white; text-decoration:none;
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 28px;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  line-height: 1;
+  transition: color 0.3s;
 }
-.form-container h1 { margin-bottom:10px; font-size:1.8em; }
-.form-container p   { color:#ccc; font-size:.95em; margin-bottom:20px; }
-.form-container p a { color:#9d60ec; }
+
+.close-btn:hover {
+  color: white;
+}
+
+.form-container h1 {
+  margin-bottom: 8px;
+  font-size: 2em;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+}
+
+.form-container p {
+  color: #ccc;
+  font-size: 0.95em;
+  margin-bottom: 25px;
+}
+
+.form-container p a {
+  color: var(--clr-brand-light, #9d60ec);
+  text-decoration: none;
+  font-weight: 600;
+  transition: text-decoration 0.2s;
+}
+
+.form-container p a:hover {
+  text-decoration: underline;
+}
+
+/* Error Banner */
+.error-banner {
+  background: rgba(255, 99, 71, 0.15);
+  border: 1px solid rgba(255, 99, 71, 0.3);
+  color: #ff8875;
+  padding: 12px 15px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 0.9em;
+  text-align: left;
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+/* Auth Buttons */
 .btn {
-  display:block; width:100%; padding:12px; margin-bottom:12px;
-  border-radius:25px; border:none; font-size:1em; cursor:pointer;
-  font-family:inherit; font-weight:600; transition:opacity .2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border-radius: 25px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  transition: transform 0.2s, opacity 0.2s, background 0.2s;
 }
-.btn:hover { opacity:.85; }
-.google-btn   { background:white;  color:#333; }
-.facebook-btn { background:#1877f2; color:white; }
-.email-btn    { background:#8037de; color:white; }
+
+.btn:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.google-btn {
+  background: white;
+  color: #333;
+}
+
+.facebook-btn {
+  background: #1877f2;
+  color: white;
+}
+
+.email-btn {
+  background: var(--clr-brand, #8037de);
+  color: white;
+}
+
+.email-btn:hover {
+  background: var(--clr-brand-dark, #5f24b0);
+}
+
+.back-btn {
+  background: transparent;
+  color: #ccc;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+}
+
+/* Divider */
 .divider {
-  text-align:center; margin:16px 0;
-  color:#aaa; position:relative;
+  text-align: center;
+  margin: 20px 0;
+  color: #aaa;
+  position: relative;
+  font-size: 0.9em;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
-.divider::before, .divider::after {
-  content:''; position:absolute; top:50%; width:44%; height:1px;
-  background:rgba(255,255,255,.2);
+
+.divider::before,
+.divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
 }
-.divider::before { left:0; }
-.divider::after  { right:0; }
-.note { font-size:.8em; color:#999; margin-top:16px; }
+
+.divider::before { left: 0; }
+.divider::after { right: 0; }
+
+/* Form Fields */
+.auth-form {
+  display: none; /* toggled via JS */
+  text-align: left;
+  animation: formSlideIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes formSlideIn {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 0.85em;
+  margin-bottom: 6px;
+  color: #bbb;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 18px;
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 0.95em;
+  font-family: inherit;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.form-control:focus {
+  border-color: var(--clr-brand-light, #9d60ec);
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 0 4px rgba(157, 96, 236, 0.15);
+  outline: none;
+}
+
+.note {
+  font-size: 0.8em;
+  color: #999;
+  margin-top: 20px;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   Mock Google Account Chooser Modal Styling
+   ========================================================================== */
+
+.mock-modal-overlay {
+  display: none; /* toggled via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 100000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.mock-modal-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.mock-modal-box {
+  background: #1e1e24;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  width: 90%;
+  max-width: 380px;
+  padding: 24px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  color: white;
+  transform: scale(0.9);
+  transition: transform 0.3s ease;
+}
+
+.mock-modal-overlay.show .mock-modal-box {
+  transform: scale(1);
+}
+
+.mock-modal-header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.mock-modal-header img {
+  margin-bottom: 12px;
+}
+
+.mock-modal-header h2 {
+  font-size: 1.4em;
+  font-weight: 600;
+  color: white;
+  margin-bottom: 4px;
+}
+
+.mock-modal-header p {
+  font-size: 0.9em;
+  color: #aaa;
+}
+
+/* Accounts List */
+.mock-accounts-list {
+  margin-bottom: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.mock-account-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 10px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-radius: 6px;
+  margin: 5px 0;
+}
+
+.mock-account-item:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.mock-account-item img {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.custom-avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 16px;
+}
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.account-name {
+  font-size: 0.95em;
+  font-weight: 500;
+  color: white;
+}
+
+.account-email {
+  font-size: 0.8em;
+  color: #aaa;
+}
+
+/* Custom Google form inside Modal */
+.custom-google-form {
+  display: none;
+  text-align: left;
+  margin-bottom: 15px;
+  animation: fadeIn 0.3s ease;
+}
+
+.mock-modal-footer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.mock-modal-footer .btn {
+  margin-bottom: 0;
+}
+
+/* ==========================================================================
+   Loading Spinner Overlay Styling
+   ========================================================================== */
+
+.loading-overlay {
+  display: none; /* toggled via JS */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  z-index: 110000;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+
+.loading-overlay.show {
+  display: flex;
+  opacity: 1;
+}
+
+.spinner-box {
+  background: #1a1a1f;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(157, 96, 236, 0.2);
+  border-top-color: var(--clr-brand-light, #9d60ec);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.spinner-box p {
+  color: white;
+  margin: 0;
+  font-size: 0.95em;
+  font-weight: 500;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

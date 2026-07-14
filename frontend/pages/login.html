@@ -1,37 +1,481 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sign up or log in to DAILYCORE — manage your orders, track delivery, and enjoy exclusive member benefits.">
-    <title>Sign Up — DAILYCORE</title>
+    <title>Account Access — DAILYCORE</title>
     <link rel="stylesheet" href="../assets/css/base.css">
     <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     <div class="container">
+        <!-- Auth Container Card -->
         <div class="form-container">
             <a href="javascript:history.back()" class="close-btn">&times;</a>
-            <h1>Sign Up</h1>
-            <p>Already a member? <a href="#">Log In</a></p>
-            <button class="btn google-btn" id="google-signup-btn">Sign up with Google</button>
-            <button class="btn facebook-btn" id="facebook-signup-btn">Sign up with Facebook</button>
-            <div class="divider">or</div>
-            <button class="btn email-btn" id="email-signup-btn">Sign up with email</button>
-            <p class="note">Your profile will be set to public automatically when you sign up. You can change this later in your profile settings.</p>
+            
+            <h1 id="auth-title">Sign Up</h1>
+            <p id="auth-subtitle">Already a member? <a href="#" id="toggle-auth-mode">Log In</a></p>
+            
+            <div id="error-message" class="error-banner"></div>
+
+            <!-- Social Auth Options -->
+            <div id="social-auth-section" class="auth-choices">
+                <button class="btn google-btn" id="google-signin-btn">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="18" height="18" alt="Google">
+                    <span id="google-btn-text">Sign up with Google</span>
+                </button>
+                <button class="btn facebook-btn" id="facebook-signin-btn">
+                    <i class="fab fa-facebook-f"></i>
+                    <span id="facebook-btn-text">Sign up with Facebook</span>
+                </button>
+                <div class="divider">or</div>
+                <button class="btn email-btn" id="toggle-email-form-btn">Sign up with email</button>
+            </div>
+
+            <!-- Email Registration Form -->
+            <form id="email-signup-form" class="auth-form">
+                <div class="form-group">
+                    <label for="reg-name">Full Name</label>
+                    <input type="text" id="reg-name" class="form-control" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-email">Email Address</label>
+                    <input type="email" id="reg-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="reg-password">Password</label>
+                    <input type="password" id="reg-password" class="form-control" placeholder="Create a password" required minlength="6">
+                </div>
+                <button type="submit" class="btn email-btn">Register Account</button>
+                <button type="button" class="btn back-btn go-back-btn">Go Back</button>
+            </form>
+
+            <!-- Email Login Form -->
+            <form id="email-login-form" class="auth-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="btn email-btn">Log In</button>
+                <button type="button" class="btn back-btn go-back-btn">Go Back</button>
+            </form>
+
+            <p class="note" id="auth-note">Your profile will be set to public automatically when you sign up. You can change this later in your profile settings.</p>
         </div>
     </div>
+
+    <!-- Mock Google Auth Modal -->
+    <div id="mock-google-modal" class="mock-modal-overlay">
+        <div class="mock-modal-box">
+            <div class="mock-modal-header">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" width="36" height="36" alt="Google">
+                <h2>Sign in with Google</h2>
+                <p>Choose an account to continue to <strong>DAILYCORE</strong></p>
+            </div>
+            
+            <div class="mock-accounts-list" id="mock-accounts-list">
+                <div class="mock-account-item" data-name="Jane Doe" data-email="jane.doe@gmail.com" data-pic="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100">
+                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&q=80&w=100" alt="Jane Doe">
+                    <div class="account-info">
+                        <span class="account-name">Jane Doe</span>
+                        <span class="account-email">jane.doe@gmail.com</span>
+                    </div>
+                </div>
+                
+                <div class="mock-account-item" data-name="Alex Smith" data-email="alex.smith@gmail.com" data-pic="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100">
+                    <img src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?auto=format&fit=crop&q=80&w=100" alt="Alex Smith">
+                    <div class="account-info">
+                        <span class="account-name">Alex Smith</span>
+                        <span class="account-email">alex.smith@gmail.com</span>
+                    </div>
+                </div>
+
+                <div class="mock-account-item" id="mock-use-custom">
+                    <div class="custom-avatar"><i class="fa-solid fa-user-plus"></i></div>
+                    <div class="account-info">
+                        <span class="account-name">Use another account</span>
+                        <span class="account-email">Sign in with a custom demo account</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Custom User Input Form (Google login fallback) -->
+            <form id="custom-google-form" class="custom-google-form">
+                <div class="form-group">
+                    <label for="custom-name">Full Name</label>
+                    <input type="text" id="custom-name" class="form-control" placeholder="John Doe" required>
+                </div>
+                <div class="form-group">
+                    <label for="custom-email">Email Address</label>
+                    <input type="email" id="custom-email" class="form-control" placeholder="john.doe@gmail.com" required>
+                </div>
+                <div class="form-group">
+                    <label for="custom-pic">Profile Picture URL (Optional)</label>
+                    <input type="url" id="custom-pic" class="form-control" placeholder="https://example.com/avatar.jpg">
+                </div>
+                <button type="submit" class="btn google-btn">Continue</button>
+                <button type="button" class="btn back-btn" id="cancel-custom-btn">Back</button>
+            </form>
+
+            <div class="mock-modal-footer">
+                <button class="btn back-btn" id="close-google-modal-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Spinner Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay">
+        <div class="spinner-box">
+            <div class="spinner"></div>
+            <p id="loading-text">Signing in...</p>
+        </div>
+    </div>
+
+    <!-- Main Logic Script -->
     <script src="../assets/js/api.js"></script>
     <script>
-        document.getElementById('google-signup-btn').addEventListener('click', () => {
-            alert('Google sign-up — backend integration coming soon.');
+        // State variables
+        let isLoginMode = false; // toggles between Login and Register modes
+        
+        // Element bindings
+        const authTitle = document.getElementById('auth-title');
+        const authSubtitle = document.getElementById('auth-subtitle');
+        const toggleAuthMode = document.getElementById('toggle-auth-mode');
+        const errorBanner = document.getElementById('error-message');
+        const authNote = document.getElementById('auth-note');
+        
+        const socialAuthSection = document.getElementById('social-auth-section');
+        const googleBtnText = document.getElementById('google-btn-text');
+        const facebookBtnText = document.getElementById('facebook-btn-text');
+        const toggleEmailFormBtn = document.getElementById('toggle-email-form-btn');
+        
+        const emailSignupForm = document.getElementById('email-signup-form');
+        const emailLoginForm = document.getElementById('email-login-form');
+        const backButtons = document.querySelectorAll('.go-back-btn');
+        
+        // Google mock popup bindings
+        const mockGoogleModal = document.getElementById('mock-google-modal');
+        const mockAccountsList = document.getElementById('mock-accounts-list');
+        const mockUseCustom = document.getElementById('mock-use-custom');
+        const customGoogleForm = document.getElementById('custom-google-form');
+        const cancelCustomBtn = document.getElementById('cancel-custom-btn');
+        const closeGoogleModalBtn = document.getElementById('close-google-modal-btn');
+        
+        // Loading overlay bindings
+        const loadingOverlay = document.getElementById('loading-overlay');
+        const loadingText = document.getElementById('loading-text');
+
+        // Initial setup
+        document.addEventListener('DOMContentLoaded', () => {
+            // Check if already logged in, redirect to home if so
+            if (localStorage.getItem('user')) {
+                window.location.href = '../index.html';
+            }
+            updateModeUI();
         });
-        document.getElementById('facebook-signup-btn').addEventListener('click', () => {
-            alert('Facebook sign-up — backend integration coming soon.');
+
+        // Toggle Login vs Signup Modes
+        toggleAuthMode.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLoginMode = !isLoginMode;
+            updateModeUI();
         });
-        document.getElementById('email-signup-btn').addEventListener('click', () => {
-            alert('Email sign-up — backend integration coming soon.');
+
+        function updateModeUI() {
+            errorBanner.style.display = 'none';
+            // Hide email forms and show choices first
+            emailSignupForm.style.display = 'none';
+            emailLoginForm.style.display = 'none';
+            socialAuthSection.style.display = 'block';
+
+            if (isLoginMode) {
+                authTitle.textContent = 'Log In';
+                toggleAuthMode.textContent = 'Sign Up';
+                authSubtitle.innerHTML = 'New to DAILYCORE? <a href="#" id="toggle-auth-mode-inner">Sign Up</a>';
+                googleBtnText.textContent = 'Log in with Google';
+                facebookBtnText.textContent = 'Log in with Facebook';
+                toggleEmailFormBtn.textContent = 'Log in with email';
+                authNote.style.display = 'none';
+                
+                document.getElementById('toggle-auth-mode-inner').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isLoginMode = false;
+                    updateModeUI();
+                });
+            } else {
+                authTitle.textContent = 'Sign Up';
+                toggleAuthMode.textContent = 'Log In';
+                authSubtitle.innerHTML = 'Already a member? <a href="#" id="toggle-auth-mode-inner">Log In</a>';
+                googleBtnText.textContent = 'Sign up with Google';
+                facebookBtnText.textContent = 'Sign up with Facebook';
+                toggleEmailFormBtn.textContent = 'Sign up with email';
+                authNote.style.display = 'block';
+                
+                document.getElementById('toggle-auth-mode-inner').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    isLoginMode = true;
+                    updateModeUI();
+                });
+            }
+        }
+
+        // Show Email Form
+        toggleEmailFormBtn.addEventListener('click', () => {
+            socialAuthSection.style.display = 'none';
+            if (isLoginMode) {
+                emailLoginForm.style.display = 'block';
+            } else {
+                emailSignupForm.style.display = 'block';
+            }
         });
+
+        // Go back to OAuth choices from email form
+        backButtons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                emailSignupForm.style.display = 'none';
+                emailLoginForm.style.display = 'none';
+                socialAuthSection.style.display = 'block';
+                errorBanner.style.display = 'none';
+            });
+        });
+
+        // ── Form Submissions ──────────────────────────────────────────────────
+
+        // 1. Email Signup Registration
+        emailSignupForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBanner.style.display = 'none';
+            
+            const name = document.getElementById('reg-name').value;
+            const email = document.getElementById('reg-email').value;
+            const password = document.getElementById('reg-password').value;
+
+            showLoading('Creating your account...');
+            
+            try {
+                const res = await window.API.registerUser(name, email, password);
+                hideLoading();
+                
+                if (res.success) {
+                    showLoading('Logging in...');
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showError(res.message);
+                }
+            } catch (err) {
+                hideLoading();
+                showError('Something went wrong. Please try again.');
+            }
+        });
+
+        // 2. Email Login
+        emailLoginForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBanner.style.display = 'none';
+
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            showLoading('Checking credentials...');
+
+            try {
+                const res = await window.API.loginUser(email, password);
+                hideLoading();
+
+                if (res.success) {
+                    showLoading('Access granted. Welcome back!');
+                    setTimeout(() => {
+                        window.location.href = '../index.html';
+                    }, 1000);
+                } else {
+                    showError(res.message);
+                }
+            } catch (err) {
+                hideLoading();
+                showError('Error logging in. Please try again.');
+            }
+        });
+
+        // 3. Facebook Login Simulation
+        document.getElementById('facebook-signin-btn').addEventListener('click', () => {
+            showLoading('Connecting to Facebook...');
+            setTimeout(() => {
+                hideLoading();
+                
+                // Save Facebook mock user session
+                const fbUser = {
+                    name: 'Sarah Connor',
+                    email: 'sarah.connor@sky.net',
+                    picture: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100'
+                };
+                localStorage.setItem('user', JSON.stringify(fbUser));
+                localStorage.setItem('token', 'mock-fb-token-98765');
+                
+                showLoading('Facebook login successful!');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1000);
+            }, 1500);
+        });
+
+        // ── Google Login Flow ─────────────────────────────────────────────────
+
+        // Check if there is a real Google client configuration
+        const GOOGLE_CLIENT_ID = 'YOUR_GOOGLE_CLIENT_ID'; // Placeholder
+
+        document.getElementById('google-signin-btn').addEventListener('click', () => {
+            if (GOOGLE_CLIENT_ID && GOOGLE_CLIENT_ID !== 'YOUR_GOOGLE_CLIENT_ID') {
+                // Initialize real Google Identity Services if a Client ID is provided
+                initializeRealGoogleLogin();
+            } else {
+                // Show standard Google Mock dialog popup
+                showGoogleMockModal();
+            }
+        });
+
+        function showGoogleMockModal() {
+            mockGoogleModal.classList.add('show');
+            mockAccountsList.style.display = 'block';
+            customGoogleForm.style.display = 'none';
+        }
+
+        // Close Google Modal
+        closeGoogleModalBtn.addEventListener('click', () => {
+            mockGoogleModal.classList.remove('show');
+        });
+
+        // Google Modal: Click pre-defined account
+        document.querySelectorAll('.mock-account-item:not(#mock-use-custom)').forEach(item => {
+            item.addEventListener('click', () => {
+                const name = item.getAttribute('data-name');
+                const email = item.getAttribute('data-email');
+                const picture = item.getAttribute('data-pic');
+                
+                selectGoogleAccount(name, email, picture);
+            });
+        });
+
+        // Google Modal: Toggle custom user account form
+        mockUseCustom.addEventListener('click', () => {
+            mockAccountsList.style.display = 'none';
+            customGoogleForm.style.display = 'block';
+        });
+
+        // Google Modal: Back to account chooser
+        cancelCustomBtn.addEventListener('click', () => {
+            customGoogleForm.style.display = 'none';
+            mockAccountsList.style.display = 'block';
+        });
+
+        // Google Modal: Submit custom user form
+        customGoogleForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('custom-name').value;
+            const email = document.getElementById('custom-email').value;
+            const pic = document.getElementById('custom-pic').value || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y';
+            
+            selectGoogleAccount(name, email, pic);
+        });
+
+        function selectGoogleAccount(name, email, picture) {
+            mockGoogleModal.classList.remove('show');
+            showLoading('Signing in with Google...');
+            
+            setTimeout(() => {
+                hideLoading();
+                
+                const googleUser = { name, email, picture };
+                localStorage.setItem('user', JSON.stringify(googleUser));
+                localStorage.setItem('token', 'mock-google-token-' + Date.now());
+                
+                showLoading('Google login successful!');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1000);
+            }, 1200);
+        }
+
+        // ── Real Google Login Initializer (Production Ready) ──────────────────
+        function initializeRealGoogleLogin() {
+            // Load script dynamically if needed
+            if (!window.google) {
+                const script = document.createElement('script');
+                script.src = 'https://accounts.google.com/gsi/client';
+                script.async = true;
+                script.defer = true;
+                script.onload = () => setupRealGoogleClient();
+                document.head.appendChild(script);
+            } else {
+                setupRealGoogleClient();
+            }
+        }
+
+        function setupRealGoogleClient() {
+            google.accounts.id.initialize({
+                client_id: GOOGLE_CLIENT_ID,
+                callback: handleRealGoogleCredentialResponse
+            });
+            // Show Google authentication prompt popup
+            google.accounts.id.prompt(); 
+        }
+
+        function handleRealGoogleCredentialResponse(response) {
+            // Parse JWT token
+            const credential = response.credential;
+            const payload = parseJwt(credential);
+
+            showLoading('Verifying Google Account...');
+
+            setTimeout(() => {
+                hideLoading();
+                const realUser = {
+                    name: payload.name,
+                    email: payload.email,
+                    picture: payload.picture
+                };
+                localStorage.setItem('user', JSON.stringify(realUser));
+                localStorage.setItem('token', credential);
+
+                showLoading('Welcome, ' + realUser.name + '!');
+                setTimeout(() => {
+                    window.location.href = '../index.html';
+                }, 1000);
+            }, 1000);
+        }
+
+        function parseJwt(token) {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        }
+
+        // ── UI Helper Methods ─────────────────────────────────────────────────
+        function showLoading(text) {
+            loadingText.textContent = text;
+            loadingOverlay.classList.add('show');
+        }
+
+        function hideLoading() {
+            loadingOverlay.classList.remove('show');
+        }
+
+        function showError(text) {
+            errorBanner.textContent = text;
+            errorBanner.style.display = 'block';
+        }
     </script>
 </body>
 </html>
