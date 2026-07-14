@@ -1,0 +1,32 @@
+﻿/* contact.css */
+body { display:flex; flex-direction:column; }
+main { flex:1; margin:150px 30px; }
+.contact-container { display:flex; }
+.contact-line { height:2px; width:100%; background-color:white; }
+.contact-dailycore { width:400px; }
+.contact-dailycore h1 { color:white; font-size:35px; margin:20px 0; }
+.contact-dailycore p  { color:white; font-size:18px; }
+.contact-dailycore p a { text-decoration:none; color:white; font-size:18px; margin-left:7px; }
+.contact-dailycore p a:hover { color:#554f4f; }
+.contact-form { width:800px; margin-left:100px; }
+.contact-form h1 { color:white; font-size:35px; margin:20px 0; }
+.contact-form p  { color:white; font-size:18px; }
+form.contact-form-el { display:flex; flex-direction:column; margin-top:20px; }
+.form-row  { display:flex; gap:10px; }
+.form-group { display:flex; flex-direction:column; margin-bottom:15px; width:100%; }
+label { font-size:.9rem; color:#a3a3a3; margin-bottom:5px; }
+input[type="text"], input[type="email"], textarea {
+  padding:10px; font-size:1rem;
+  background:#1c1b22; border:1px solid #8b72a8;
+  border-radius:5px; color:#fff; outline:none;
+  font-family:inherit;
+}
+textarea { resize:none; }
+input:focus, textarea:focus { border-color:#9a59ff; }
+.submit-btn {
+  background:#9a59ff; color:#fff; border:none;
+  padding:12px; font-size:1rem; border-radius:5px;
+  cursor:pointer; font-family:inherit;
+  transition:background .3s;
+}
+.submit-btn:hover { background:#7e47d8; }

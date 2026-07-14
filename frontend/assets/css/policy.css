@@ -1,0 +1,14 @@
+﻿/* policy.css — shared for all policy pages */
+body { display:flex; flex-direction:column; min-height:100vh; }
+main { flex:1; margin:120px 30px 60px; }
+.policy-container { max-width:900px; margin:0 auto; color:white; }
+.policy-title {
+  font-size:2.2em; font-weight:700; margin-bottom:30px;
+  padding-bottom:14px; border-bottom:3px solid rgba(255,255,255,.2);
+}
+.policy-body h3 { font-size:1.2em; margin:24px 0 8px; color:#c9a0f5; }
+.policy-body p  { font-size:1em; line-height:1.7; color:#ddd; margin-bottom:12px; }
+.policy-body ul, .policy-body ol { margin:0 0 12px 24px; }
+.policy-body li { font-size:1em; line-height:1.7; color:#ddd; margin-bottom:6px; }
+.policy-body a  { color:#9d60ec; }
+.policy-body strong { color:#fff; }

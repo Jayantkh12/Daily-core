@@ -1,0 +1,102 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Complete your DAILYCORE order — secure checkout.">
+    <title>Checkout — DAILYCORE</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/contact.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="navbardiv">
+                <h1 class="logo"><a href="../index.html">DAILYCORE</a></h1>
+                <form class="searchbar-form">
+                    <input class="searchbar" type="text" placeholder="Search">
+                    <button class="submit" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <ul>
+                    <li><a href="bestseller.html">Best Seller</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart<span id="cart-badge"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="contact-container" style="flex-direction:column; max-width:700px; margin:0 auto;">
+            <h1 style="color:white; margin-bottom:24px;">Checkout</h1>
+            <p style="color:#ccc; margin-bottom:30px;">Backend payment integration coming soon. Your order will be processed securely.</p>
+            <form class="contact-form-el" action="#" method="post">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="checkout-first">First name</label>
+                        <input type="text" id="checkout-first" name="first-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="checkout-last">Last name</label>
+                        <input type="text" id="checkout-last" name="last-name" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-email">Email</label>
+                    <input type="email" id="checkout-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-address">Shipping Address</label>
+                    <input type="text" id="checkout-address" name="address" required>
+                </div>
+                <div class="form-group">
+                    <label for="checkout-phone">Phone Number</label>
+                    <input type="text" id="checkout-phone" name="phone" required>
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top:10px;">Place Order</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-column">
+                <div class="footer-heading">MENU</div>
+                <div class="footer-name">
+                    <a href="sale.html">Sale</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">POLICY</div>
+                <div class="footer-name">
+                    <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="shipping-policy.html">Shipping Policy</a>
+                    <a href="refund-policy.html">Refund Policy</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">INFO</div>
+                <div class="footer-name">
+                    <a href="mailto:jayantchoudhary2901@gmail.com">jayantchoudhary2901@gmail.com</a>
+                    <a href="tel:+917850078064">+91 7850078064</a>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jayant.choudhary_001/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>jayant.choudhary_001</a>
+                        <a href="#"><i class="fab fa-facebook"></i>Jayant Choudhary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="namelogo">
+                <div class="namephoto"><a href="../index.html">DAILYCORE</a></div>
+            </div>
+        </div>
+        <div class="copyright">&copy;2024 All Rights Reserved.</div>
+    </footer>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/main.js"></script>
+</body>
+</html>

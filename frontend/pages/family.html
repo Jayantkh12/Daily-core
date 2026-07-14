@@ -1,0 +1,114 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Shop DAILYCORE Family wellness products — supplements, soaps, and daily care.">
+    <title>Family — DAILYCORE</title>
+    <link rel="stylesheet" href="../assets/css/base.css">
+    <link rel="stylesheet" href="../assets/css/products.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <header>
+        <nav class="navbar" id="navbar">
+            <div class="navbardiv">
+                <h1 class="logo"><a href="../index.html">DAILYCORE</a></h1>
+                <form class="searchbar-form">
+                    <input class="searchbar" type="text" placeholder="Search">
+                    <button class="submit" type="button"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+                <ul>
+                    <li><a href="bestseller.html">Best Seller</a></li>
+                    <li><a href="categories.html">Categories</a></li>
+                    <li><a href="refund-policy.html">Refund Policy</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="login.html"><i class="fa-solid fa-user"></i>Login</a></li>
+                    <li><a href="cart.html"><i class="fa-solid fa-cart-shopping"></i>Cart<span id="cart-badge"></span></a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+            <aside class="sidebar">
+                <h2>Browse by</h2>
+                <div class="sidebar-line"></div>
+                <ul>
+                    <li><a href="categories.html">All Products</a></li>
+                    <li><a href="bestseller.html">Best Sellers</a></li>
+                    <li><a href="face.html">Face</a></li>
+                    <li><a href="family.html">Family</a></li>
+                    <li><a href="heart.html">Heart</a></li>
+                    <li><a href="newin.html">New In</a></li>
+                    <li><a href="sale.html">Sale</a></li>
+                </ul>
+                <h2>Filter by</h2>
+                <div class="sidebar-line"></div>
+                <br>
+                <label for="price-range">Price</label>
+                <input type="range" id="price-range" min="250" max="4000" step="50">
+                <span class="price-label" id="price-label">250 - 4000</span>
+            </aside>
+        </div>
+        <div class="product-grid">
+            <h1>Family</h1>
+            <div class="sort">
+                <label for="sort-options">Sort by:</label>
+                <select id="sort-options">
+                    <option value="recommended">Recommended</option>
+                    <option value="price-low-high">Price: Low to High</option>
+                    <option value="price-high-low">Price: High to Low</option>
+                </select>
+            </div>
+            <div class="products" id="products-container"></div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer">
+            <div class="footer-column">
+                <div class="footer-heading">MENU</div>
+                <div class="footer-name">
+                    <a href="sale.html">Sale</a>
+                    <a href="contact.html">Contact</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">POLICY</div>
+                <div class="footer-name">
+                    <a href="terms-and-conditions.html">Terms &amp; Conditions</a>
+                    <a href="privacy-policy.html">Privacy Policy</a>
+                    <a href="shipping-policy.html">Shipping Policy</a>
+                    <a href="refund-policy.html">Refund Policy</a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <div class="footer-heading">INFO</div>
+                <div class="footer-name">
+                    <a href="mailto:jayantchoudhary2901@gmail.com">jayantchoudhary2901@gmail.com</a>
+                    <a href="tel:+917850078064">+91 7850078064</a>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/jayant.choudhary_001/" target="_blank" rel="noopener"><i class="fab fa-instagram"></i>jayant.choudhary_001</a>
+                        <a href="#"><i class="fab fa-facebook"></i>Jayant Choudhary</a>
+                    </div>
+                </div>
+            </div>
+            <div class="namelogo">
+                <div class="namephoto"><a href="../index.html">DAILYCORE</a></div>
+            </div>
+        </div>
+        <div class="copyright">&copy;2024 All Rights Reserved.</div>
+    </footer>
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/cart.js"></script>
+    <script src="../assets/js/products.js"></script>
+    <script src="../assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            Products.renderProducts('products-container', 'family');
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+/* ═══════════════════════════════════════════════════════════════════════
+   products.css — Shared styles for all product listing pages
+   (categories, face, family, heart, bestseller, newin, sale)
+   ═══════════════════════════════════════════════════════════════════════ */
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+}
+
+main {
+  flex: 1;
+  margin: 80px 0 0;
+  display: flex;
+}
+
+/* ── Layout ──────────────────────────────────────────────────────────── */
+.container {
+  display: flex;
+  padding: 10px;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────── */
+.sidebar {
+  width: 250px;
+  padding: 20px;
+  border-radius: 8px;
+  color: white;
+  height: 600px;
+  flex-shrink: 0;
+}
+
+.sidebar h2 {
+  margin-bottom: 20px;
+  font-size: 25px;
+}
+
+.sidebar ul {
+  list-style: none;
+  margin-bottom: 20px;
+}
+
+.sidebar ul li {
+  margin: 10px 0;
+}
+
+.sidebar ul li a {
+  font-size: 18px;
+  color: #ccc;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.sidebar ul li a:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+.sidebar-line {
+  height: 1px;
+  background-color: white;
+  margin-bottom: 16px;
+}
+
+.price-label {
+  display: block;
+  margin-top: 10px;
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Price range input styling */
+input[type="range"] {
+  width: 100%;
+  accent-color: #8037de;
+}
+
+/* ── Product Grid ────────────────────────────────────────────────────── */
+.product-grid {
+  flex-grow: 1;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+.product-grid h1 {
+  font-size: 1.5em;
+  color: #fff;
+  margin-bottom: 16px;
+}
+
+/* Sort bar */
+.sort {
+  margin-bottom: 20px;
+}
+
+.sort label {
+  color: #ccc;
+  font-size: 16px;
+}
+
+.sort select {
+  margin-left: 10px;
+  padding: 6px 10px;
+  background-color: #232443;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+/* Products grid */
+.products {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+/* ── Product Card ────────────────────────────────────────────────────── */
+.product-card {
+  position: relative;
+  background-color: #232443;
+  border-radius: 8px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.35);
+}
+
+.product-card img {
+  width: 100%;
+  max-height: 275px;
+  object-fit: cover;
+  border-radius: 5px 5px 0 0;
+  display: block;
+}
+
+/* Quick View overlay */
+.overlay-text {
+  position: absolute;
+  bottom: 113px;
+  left: 0;
+  right: 0;
+  background-color: rgba(255,255,255,0.63);
+  color: black;
+  padding: 10px;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.product-card:hover .overlay-text {
+  opacity: 1;
+}
+
+.product-card h3 {
+  margin: 12px 10px 6px;
+  font-size: 0.95em;
+  color: #fff;
+  flex-grow: 1;
+}
+
+.product-card .price {
+  font-size: 1em;
+  color: #e5e5e5;
+  margin-bottom: 8px;
+}
+
+.product-card button {
+  margin-top: auto;
+  padding: 10px;
+  width: 100%;
+  background-color: #ff6347;
+  border: none;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 0 0 5px 5px;
+  font-family: inherit;
+  font-size: 14px;
+  transition: background-color 0.2s;
+}
+
+.product-card button:hover {
+  background-color: #ff4500;
+}

@@ -1,0 +1,41 @@
+﻿/* login.css */
+body {
+  background-image:url('../public/images/dark%20purple.jpg');
+  background-size:cover; min-height:100vh;
+  display:flex; align-items:center; justify-content:center;
+}
+.container { display:flex; align-items:center; justify-content:center; width:100%; }
+.form-container {
+  background:rgba(255,255,255,.08);
+  backdrop-filter:blur(20px);
+  border:1px solid rgba(255,255,255,.15);
+  border-radius:15px; padding:40px;
+  width:380px; color:white; position:relative;
+}
+.close-btn {
+  position:absolute; top:14px; right:18px;
+  font-size:24px; color:white; text-decoration:none;
+}
+.form-container h1 { margin-bottom:10px; font-size:1.8em; }
+.form-container p   { color:#ccc; font-size:.95em; margin-bottom:20px; }
+.form-container p a { color:#9d60ec; }
+.btn {
+  display:block; width:100%; padding:12px; margin-bottom:12px;
+  border-radius:25px; border:none; font-size:1em; cursor:pointer;
+  font-family:inherit; font-weight:600; transition:opacity .2s;
+}
+.btn:hover { opacity:.85; }
+.google-btn   { background:white;  color:#333; }
+.facebook-btn { background:#1877f2; color:white; }
+.email-btn    { background:#8037de; color:white; }
+.divider {
+  text-align:center; margin:16px 0;
+  color:#aaa; position:relative;
+}
+.divider::before, .divider::after {
+  content:''; position:absolute; top:50%; width:44%; height:1px;
+  background:rgba(255,255,255,.2);
+}
+.divider::before { left:0; }
+.divider::after  { right:0; }
+.note { font-size:.8em; color:#999; margin-top:16px; }
