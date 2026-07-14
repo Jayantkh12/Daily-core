@@ -50,32 +50,63 @@ body {
   color: var(--clr-text);
 }
 
-/* ── Navbar ────────────────────────────────────────────────────────────── */
+/* ── Premium Floating Navbar ────────────────────────────────────────────── */
 .navbar {
-  background-color: transparent;
-  padding: 10px;
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  transition: background-color var(--transition);
+  padding: 20px 30px;
   z-index: 9999;
+  transition: padding 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
+/* On scroll, make the navbar more compact */
 .navbar.dark {
-  background-color: var(--clr-brand);
+  padding: 12px 30px;
 }
 
 .navbar .navbardiv {
+  max-width: 1400px;
+  margin: 0 auto;
+  background: rgba(35, 36, 67, 0.25);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 40px;
+  padding: 8px 35px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 10px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  transition: background 0.4s, border-color 0.4s, box-shadow 0.4s;
 }
 
-.navbar .navbardiv h1 a {
-  color: var(--clr-text);
+/* Scroll state on the inner container */
+.navbar.dark .navbardiv {
+  background: rgba(19, 0, 28, 0.75);
+  border-color: rgba(157, 96, 236, 0.25);
+  box-shadow: 0 8px 32px 0 rgba(128, 55, 222, 0.15), 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Brand Logo Gradient */
+.navbar .navbardiv h1.logo a {
+  font-weight: 800;
+  font-size: 26px;
+  letter-spacing: 1.5px;
+  background: linear-gradient(135deg, #ffffff 40%, var(--clr-brand-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
   text-decoration: none;
+  transition: opacity 0.3s;
+  display: block;
 }
 
+.navbar .navbardiv h1.logo a:hover {
+  opacity: 0.9;
+}
+
+/* Nav Links Styling */
 .navbar .navbardiv ul {
   display: flex;
   list-style: none;
@@ -83,28 +114,53 @@ body {
 }
 
 .navbar .navbardiv ul li a {
-  margin: 0 20px;
-  color: var(--clr-text);
+  margin: 0 16px;
+  color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  font-size: 18px;
-  font-weight: 500;
+  font-size: 16px;
+  font-weight: 600;
   position: relative;
-  transition: color var(--transition);
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block;
+}
+
+.navbar .navbardiv ul li a:hover {
+  color: white;
+  transform: translateY(-1px);
+}
+
+.navbar .navbardiv ul li a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--clr-brand-light), var(--clr-accent));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar .navbardiv ul li a.active-link {
+  color: white;
 }
 
 .navbar .navbardiv ul li a.active-link::after,
 .navbar .navbardiv ul li a:hover::after {
-  content: '';
-  position: absolute;
-  bottom: -3px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background: white;
+  transform: scaleX(1);
+  transform-origin: left;
 }
 
 .navbar .navbardiv ul li a i {
-  margin-right: 8px;
+  margin-right: 6px;
+  font-size: 14px;
+  color: var(--clr-brand-light);
+  transition: transform 0.3s;
+}
+
+.navbar .navbardiv ul li a:hover i {
+  transform: scale(1.15);
 }
 
 /* Cart Badge */
@@ -118,45 +174,75 @@ body {
   display: none;
   position: relative;
   top: -8px;
-  left: -6px;
+  left: -4px;
 }
 
-/* Searchbar */
+/* Premium Searchbar styling */
 .searchbar-form {
-  background-color: gray;
-  border-radius: var(--radius-lg);
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 25px;
   position: relative;
+  width: 230px;
+  height: 38px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.navbardiv .searchbar-form input {
+.searchbar-form:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.searchbar-form:focus-within {
+  width: 260px;
+  background-color: rgba(255, 255, 255, 0.1);
+  border-color: var(--clr-brand-light);
+  box-shadow: 0 0 15px rgba(157, 96, 236, 0.25);
+}
+
+.navbardiv .searchbar-form input.searchbar {
   width: 100%;
   height: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: 25px;
   display: block;
-  font-size: 18px;
-  padding: 5px 40px 5px 20px;
+  font-size: 14px;
+  padding: 5px 40px 5px 18px;
   border: none;
+  background: transparent;
+  color: white;
 }
 
-input:focus {
-  outline: none;
+.navbardiv .searchbar-form input.searchbar::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 14px;
 }
 
 .submit {
   position: absolute;
   top: 0;
   right: 0;
-  width: 50px;
+  width: 40px;
   height: 100%;
-  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  border-radius: 0 25px 25px 0;
   cursor: pointer;
   border: none;
   background: none;
-  font-size: 18px;
+  font-size: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.submit i { color: rgb(93, 94, 95); }
-.submit:hover i { color: rgb(162, 163, 163); }
+.submit i {
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s, transform 0.3s;
+}
+
+.searchbar-form:focus-within .submit i,
+.submit:hover i {
+  color: var(--clr-brand-light);
+  transform: rotate(15deg) scale(1.1);
+}
 
 /* ── Footer ────────────────────────────────────────────────────────────── */
 footer {
