@@ -4,12 +4,22 @@
  * Includes sort, price-filter, and category-filter logic.
  */
 
+// Helper to fix image paths when loaded from index.html (root level of frontend)
+function fixImagePath(imagePath) {
+  if (!imagePath) return '';
+  const isSubpage = window.location.pathname.includes('/pages/');
+  if (!isSubpage && imagePath.startsWith('../')) {
+    return imagePath.replace(/^\.\.\//, ''); // Remove leading "../" -> "public/images/..."
+  }
+  return imagePath;
+}
+
 // ── Card Builder ──────────────────────────────────────────────────────────────
 
 function buildProductCard(product) {
   return `
     <div class="product-card" data-price="${product.price}" data-id="${product.id}">
-      <img src="${product.image}" alt="${product.name}" loading="lazy">
+      <img src="${fixImagePath(product.image)}" alt="${product.name}" loading="lazy">
       <div class="overlay-text">Quick View</div>
       <h3>${product.name}</h3>
       <p class="price">₹${product.price.toLocaleString('en-IN')}</p>
@@ -68,7 +78,7 @@ async function renderHomeBestSellers(containerId) {
     const slice = products.slice(0, 3);
     container.innerHTML = slice.map(p =>
       `<a href="pages/product-details.html?id=${p.id}">
-        <img src="${p.image}" height="470px" alt="${p.name}">
+        <img src="${fixImagePath(p.image)}" height="470px" alt="${p.name}">
        </a>`
     ).join('');
   } catch (e) { console.error(e); }
@@ -85,7 +95,7 @@ async function renderHomeNewArrivals(containerId) {
     const slice = products.slice(0, 3);
     container.innerHTML = slice.map(p =>
       `<a href="pages/product-details.html?id=${p.id}">
-        <img src="${p.image}" height="470px" alt="${p.name}">
+        <img src="${fixImagePath(p.image)}" height="470px" alt="${p.name}">
        </a>`
     ).join('');
   } catch (e) { console.error(e); }
@@ -141,7 +151,7 @@ async function renderProductDetail() {
     const el = document.getElementById('product-detail');
     if (el) {
       el.innerHTML = `
-        <div class="pd-image"><img src="${product.image}" alt="${product.name}"></div>
+        <div class="pd-image"><img src="${fixImagePath(product.image)}" alt="${product.name}"></div>
         <div class="pd-info">
           <h1>${product.name}</h1>
           <p class="pd-price">₹${product.price.toLocaleString('en-IN')}</p>
