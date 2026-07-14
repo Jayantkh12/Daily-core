@@ -1,10 +1,3 @@
 {
-  "cleanUrls": true,
-  "rewrites": [
-    { "source": "/assets/:path*", "destination": "/frontend/assets/:path*" },
-    { "source": "/public/:path*", "destination": "/frontend/public/:path*" },
-    { "source": "/pages/:path*", "destination": "/frontend/pages/:path*" },
-    { "source": "/", "destination": "/frontend/index.html" },
-    { "source": "/index.html", "destination": "/frontend/index.html" }
-  ]
+  "cleanUrls": true
 }
