@@ -44,98 +44,114 @@
 }
 
 .container .dailycore .lines .shopnow {
-  font-size: 20px;
-  padding: 5px 18px;
-  background-color: white;
-  border-radius: 20px;
-  border: 4px solid purple;
-  transition: padding 0.2s, border 0.2s;
+  font-size: 18px;
+  padding: 10px 28px;
+  background-color: var(--clr-brand);
+  border-radius: 30px;
+  border: 2px solid var(--clr-brand-light);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  display: inline-block;
 }
 
 .container .dailycore .lines .shopnow:hover {
-  padding: 9px 23px;
-  border: none;
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(157, 96, 236, 0.3);
 }
 
 .container .dailycore .lines .shopnow a {
   text-decoration: none;
-  color: purple;
-}
-
-.container .dailycore .lines .shopnow a:hover {
-  color: blue;
+  color: white;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
 /* Join Now Panel */
 .joinnow {
-  background-color: transparent;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 10px rgba(255,255,255,.2);
-  border: 2px solid rgba(255,255,255,.2);
-  border-radius: 10px;
+  background: rgba(35, 36, 67, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
   margin: 20px;
-  margin-top: 400px;
-  padding: 20px;
+  margin-top: 90px;
+  padding: 30px;
   width: 400px;
   overflow-x: hidden;
 }
 
 .joinnow .signupline {
   color: white;
-  font-size: 23px;
+  font-size: 22px;
+  font-family: var(--font-serif);
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 .joinnow label {
-  color: whitesmoke;
-  font-size: 20px;
-  margin-left: 30px;
+  color: var(--clr-text-muted);
+  font-size: 14px;
+  margin-left: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .joinnow .email {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1.5px solid white;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   outline: none;
-  padding: 5px 0;
-  font-size: 16px;
-  width: 80%;
+  padding: 10px 15px;
+  font-size: 15px;
+  width: 100%;
   box-sizing: border-box;
-  margin-left: 30px;
-  margin-right: 30px;
-  padding-left: 5px;
   color: white;
+  margin-top: 8px;
+  transition: all 0.3s;
 }
 
 .joinnow .email:focus {
-  border-bottom: 2px solid whitesmoke;
+  border-color: var(--clr-brand-light);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(157, 96, 236, 0.2);
 }
 
 .joinnow .clickjoinnow {
-  background-color: #9d60ec;
+  background-color: var(--clr-brand);
+  border: 1px solid var(--clr-brand-light);
   text-align: center;
-  border-radius: 20px;
-  height: 30px;
-  margin: 20px 30px;
-  padding: 5px;
-  transition: background-color 0.3s;
+  border-radius: 25px;
+  height: 44px;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .joinnow .clickjoinnow a {
   text-decoration: none;
-  color: black;
+  color: white;
+  font-weight: 700;
   cursor: pointer;
+  display: block;
+  width: 100%;
+  line-height: 42px;
 }
 
 .joinnow .clickjoinnow:hover {
-  background-color: #7e4bb0;
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
 
 /* Section Dividers */
 .categoryline {
-  margin: 30px;
-  height: 5px;
-  width: 96%;
-  background-color: white;
+  margin: 60px auto;
+  height: 1px;
+  width: 95%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.12) 15%, rgba(255, 255, 255, 0.12) 85%, transparent);
 }
 
 /* Best Sellers Section */
@@ -151,55 +167,60 @@
 }
 
 .bestsellername {
-  font-size: 50px;
+  font-size: 40px;
+  font-family: var(--font-serif);
   font-weight: 700;
 }
 
 .viewallbestseller a {
-  color: black;
-  background-color: #9d60ec;
-  padding: 10px 80px;
-  border: 1px solid black;
+  color: white;
+  background-color: var(--clr-brand);
+  border: 1px solid var(--clr-brand-light);
+  padding: 12px 40px;
   border-radius: 30px;
   text-decoration: none;
-  transition: color 0.2s, padding 0.2s, border 0.2s;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .viewallbestseller a:hover {
-  border: none;
-  color: whitesmoke;
-  padding: 11px 81px;
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
 
 .bestsellerimage {
   width: 100%;
   display: flex;
   justify-content: space-between;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .bestsellerimage a img {
   border-radius: 20px;
-  padding: 10px;
-  transition: padding 0.3s ease-in-out;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
 }
 
 .bestsellerimage a img:hover {
-  padding: 0;
+  transform: scale(1.04);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
 }
 
 /* Shop By Category */
 .shopbycategoryname {
-  font-size: 50px;
+  font-size: 40px;
   color: whitesmoke;
+  font-family: var(--font-serif);
   font-weight: 700;
-  margin: 80px 30px;
+  margin: 60px 30px 40px;
 }
 
 .shopbycategoryimage {
   display: flex;
   justify-content: space-between;
-  margin: 80px 30px 10px;
+  margin: 40px 30px;
+  gap: 20px;
 }
 
 .category-item {
@@ -208,41 +229,50 @@
 }
 
 .category-item img {
-  border-radius: 10px;
+  border-radius: 15px;
+  width: 100%;
+  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.category-item:hover img {
+  transform: translateY(-5px);
 }
 
 .category-link {
-  font-size: 20px;
-  background-color: white;
-  border: 4px solid purple;
+  font-size: 16px;
+  background-color: var(--clr-brand);
+  border: 1px solid var(--clr-brand-light);
   display: inline-block;
+  margin-top: 15px;
   margin-bottom: 10px;
-  color: black;
-  padding: 9px 15px;
-  border-radius: 10px;
+  color: white;
+  padding: 10px 24px;
+  border-radius: 20px;
   text-decoration: none;
-  transition: background-color 0.3s, color 0.3s, padding 0.2s, border 0.2s;
+  font-weight: 600;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .category-link:hover {
-  background-color: white;
-  color: blue;
-  padding: 13px 19px;
-  border: none;
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
 
 /* Brand Section */
 .brandname {
-  font-size: 50px;
+  font-size: 40px;
   color: whitesmoke;
+  font-family: var(--font-serif);
   font-weight: 700;
-  margin: 50px 30px;
+  margin: 60px 30px 40px;
 }
 
 .brandnameimage {
   display: flex;
   justify-content: center;
-  margin-bottom: 30px;
+  margin-bottom: 35px;
+  gap: 30px;
 }
 
 /* New Arrivals Section */
@@ -258,127 +288,172 @@
 }
 
 .newarrivalsname {
-  font-size: 50px;
+  font-size: 40px;
+  font-family: var(--font-serif);
   font-weight: 700;
 }
 
 .viewnewarrivals a {
-  color: black;
-  background-color: #9d60ec;
-  padding: 10px 80px;
+  color: white;
+  background-color: var(--clr-brand);
+  border: 1px solid var(--clr-brand-light);
+  padding: 12px 40px;
   border-radius: 30px;
   text-decoration: none;
-  transition: color 0.2s, padding 0.2s;
+  font-weight: 600;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .viewnewarrivals a:hover {
-  color: whitesmoke;
-  padding: 11px 81px;
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
 
 /* Newsletter Strip */
 .unlockexclusivedeals {
-  background-color: transparent;
-  backdrop-filter: blur(20px);
-  box-shadow: 0 0 10px rgba(255,255,255,.2);
-  border: 2px solid rgba(255,255,255,.2);
-  border-radius: 10px;
+  background: rgba(35, 36, 67, 0.25);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: var(--radius-lg);
   display: flex;
   justify-content: space-between;
-  height: 300px;
+  align-items: center;
+  padding: 40px 60px;
   margin-top: 80px;
 }
 
 .unlockexclusivedealsname {
-  margin: 60px 80px;
-  width: 450px;
+  width: 50%;
 }
 
-.unlockexclusivedealsname h2 { font-size: 40px; }
-.unlockexclusivedealsname p  { font-size: 20px; }
+.unlockexclusivedealsname h2 {
+  font-size: 36px;
+  font-family: var(--font-serif);
+  margin-bottom: 12px;
+}
+
+.unlockexclusivedealsname p {
+  font-size: 16px;
+  color: var(--clr-text-muted);
+}
 
 .unlockexclusivedealsemail {
-  width: 300px;
-  margin-top: 80px;
-  margin-right: 80px;
+  width: 350px;
 }
 
 .unlockexclusivedealsemail label {
-  color: whitesmoke;
-  font-size: 18px;
+  color: var(--clr-text-muted);
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
 .unlockexclusivedealsemail .email {
-  background-color: transparent;
-  border: none;
-  border-bottom: 1.5px solid white;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
   outline: none;
-  padding: 5px 0 5px 5px;
-  font-size: 16px;
+  padding: 12px 18px;
+  font-size: 15px;
   width: 100%;
   color: white;
+  margin-top: 8px;
+  transition: all 0.3s;
 }
 
 .unlockexclusivedealsemail .email:focus {
-  border-bottom: 2px solid whitesmoke;
+  border-color: var(--clr-brand-light);
+  background-color: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 0 10px rgba(157, 96, 236, 0.2);
 }
 
 .unlockexclusivedealsemail .clicksubmit {
-  background-color: white;
-  width: 100px;
+  background-color: var(--clr-brand);
+  border: 1px solid var(--clr-brand-light);
+  width: 140px;
   text-align: center;
-  border-radius: 10px;
-  height: 30px;
-  margin: 20px 0;
-  padding: 5px;
+  border-radius: 25px;
+  height: 44px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .unlockexclusivedealsemail .clicksubmit a {
   text-decoration: none;
-  color: black;
+  color: white;
+  font-weight: 700;
   cursor: pointer;
+  display: block;
+  width: 100%;
+  line-height: 42px;
+}
+
+.unlockexclusivedealsemail .clicksubmit:hover {
+  background-color: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
 
 /* Why Us Section */
 .whyus {
-  margin: 150px 30px;
+  margin: 100px 30px;
   color: whitesmoke;
-  height: 300px;
+  height: auto;
 }
 
-.whyusname { font-size: 50px; }
+.whyusname {
+  font-size: 40px;
+  font-family: var(--font-serif);
+}
 
 .whyuscontent {
-  margin: 80px 0;
+  margin: 50px 0;
   display: flex;
   justify-content: space-between;
+  gap: 30px;
 }
 
 .whyus1, .whyus2, .whyus3 {
-  font-size: 25px;
-  width: 450px;
+  font-size: 16px;
+  flex: 1;
+  background: rgba(35, 36, 67, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  padding: 30px;
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(8px);
 }
 
 .whyus1name, .whyus2name, .whyus3name {
   display: flex;
-  justify-content: flex-start;
-  margin-top: 50px;
-  width: 450px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 0;
+  width: auto;
 }
 
 .whyus1name div,
 .whyus2name div,
 .whyus3name div {
-  margin-right: 20px;
-  height: 100px;
-  font-size: 25px;
+  margin-right: 0;
+  margin-bottom: 15px;
+  height: auto;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--clr-accent);
 }
 
 .whyus1name div i {
-  margin-top: 20px;
-  padding: 10px 0;
+  margin-top: 0;
+  padding: 0;
 }
 
 .whyus2name div img {
-  margin-top: -10px;
+  margin-top: 0;
 }
