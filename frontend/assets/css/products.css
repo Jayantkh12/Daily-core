@@ -190,7 +190,7 @@ input[type="range"] {
   margin-bottom: 12px;
 }
 
-.product-card button {
+.product-card .add-to-cart-btn {
   margin-top: auto;
   padding: 12px;
   width: 100%;
@@ -206,7 +206,7 @@ input[type="range"] {
   transition: all 0.3s;
 }
 
-.product-card button:hover {
+.product-card .add-to-cart-btn:hover {
   background-color: var(--clr-brand-light);
   box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
 }
@@ -265,7 +265,7 @@ input[type="range"] {
 @media (max-width: 768px) {
   main {
     flex-direction: column;
-    margin: 120px 0 0;
+    margin: 165px 0 0;
   }
   
   .container {

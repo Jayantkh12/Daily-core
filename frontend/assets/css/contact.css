@@ -156,7 +156,7 @@ input:focus, textarea:focus {
 /* ── Contact Mobile Responsiveness ────────────────────────────────────────── */
 @media (max-width: 768px) {
   main {
-    margin: 130px 0 40px;
+    margin: 165px 0 40px;
   }
   
   .contact-container {

@@ -72,7 +72,7 @@ main  { flex:1; }
 /* ── Cart Mobile Responsiveness ───────────────────────────────────────────── */
 @media (max-width: 768px) {
   .cart-page-wrapper {
-    margin: 130px auto 40px;
+    margin: 165px auto 40px;
     padding: 0 15px;
   }
 }

@@ -38,7 +38,7 @@ function buildProductCard(product) {
         <h3>${product.name}</h3>
       </a>
       <p class="price">₹${product.price.toLocaleString('en-IN')}</p>
-      <button onclick="Cart.addToCart('${product.id}', '${product.name.replace(/'/g,"\\'")}', ${product.price}, '${product.image}')">
+      <button class="add-to-cart-btn" onclick="Cart.addToCart('${product.id}', '${product.name.replace(/'/g,"\\'")}', ${product.price}, '${product.image}')">
         Add to Cart
       </button>
     </div>
