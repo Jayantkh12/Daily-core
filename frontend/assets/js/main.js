@@ -185,6 +185,12 @@ function showNewsletterSuccess(form) {
 
     const liParent = loginLink.parentElement;
     liParent.className = 'user-profile-menu';
+
+    function resolvePath(filename) {
+      const isSubpage = window.location.pathname.includes('/pages/');
+      return isSubpage ? filename : `pages/${filename}`;
+    }
+
     liParent.innerHTML = `
       <span class="user-profile-trigger" id="profile-dropdown-trigger">
         <img src="${userData.picture || 'https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y'}" alt="${userData.name}">
@@ -192,10 +198,28 @@ function showNewsletterSuccess(form) {
         <i class="fa-solid fa-caret-down" style="font-size:12px;"></i>
       </span>
       <div class="user-dropdown" id="profile-dropdown">
-        <div class="user-dropdown-header">${userData.email}</div>
-        <a href="#" class="logout-btn" id="nav-logout-btn">
-          <i class="fa-solid fa-right-from-bracket" style="margin-right:8px;"></i>Logout
-        </a>
+        <div class="user-dropdown-header">
+          <div class="user-dropdown-name">Hello ${userData.name.split(' ')[0]}</div>
+          <div class="user-dropdown-phone">${userData.phone || '7850078064'}</div>
+        </div>
+        <div class="user-dropdown-section">
+          <a href="#">Orders</a>
+          <a href="#">Wishlist</a>
+          <a href="#">Gift Cards</a>
+          <a href="${resolvePath('contact.html')}">Contact Us</a>
+          <a href="#">DAILYCORE Insider <span class="insider-badge">New</span></a>
+        </div>
+        <div class="user-dropdown-section">
+          <a href="#">DAILYCORE Credit</a>
+          <a href="#">Coupons</a>
+          <a href="#">Saved Cards</a>
+          <a href="#">Saved VPA</a>
+          <a href="#">Saved Addresses</a>
+        </div>
+        <div class="user-dropdown-section">
+          <a href="#">Edit Profile</a>
+          <a href="#" class="logout-btn" id="nav-logout-btn">Logout</a>
+        </div>
       </div>
     `;
 
