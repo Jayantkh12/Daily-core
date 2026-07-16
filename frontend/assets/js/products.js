@@ -29,6 +29,9 @@ function buildProductCard(product) {
   const detailUrl = fixProductDetailPath(product.id);
   return `
     <div class="product-card" data-price="${product.price}" data-id="${product.id}">
+      <button class="wishlist-btn" data-id="${product.id}" aria-label="Add to wishlist">
+        <i class="fa-regular fa-heart"></i>
+      </button>
       <a href="${detailUrl}" style="text-decoration: none; color: inherit; display: block;">
         <img src="${fixImagePath(product.image)}" alt="${product.name}" loading="lazy">
         <div class="overlay-text">View Details</div>
@@ -87,6 +90,7 @@ async function renderProducts(containerId, category = 'all') {
 
     container.innerHTML = products.map(buildProductCard).join('');
     initSortAndFilter(container, products);
+    if (window.Wishlist) window.Wishlist.initWishlistButtons();
   } catch (err) {
     console.error('renderProducts error:', err);
     container.innerHTML = '<p class="error-products">Failed to load products. Please try again.</p>';
@@ -184,11 +188,17 @@ async function renderProductDetail() {
           <h1>${product.name}</h1>
           <p class="pd-price">₹${product.price.toLocaleString('en-IN')}</p>
           <p class="pd-desc">${product.description}</p>
-          <button class="pd-add-btn" onclick="Cart.addToCart('${product.id}','${product.name.replace(/'/g,"\\'")}',${product.price},'${product.image}')">
-            Add to Cart
-          </button>
+          <div class="pd-actions" style="display: flex; gap: 15px; margin-top: 20px;">
+            <button class="pd-add-btn" style="flex: 1;" onclick="Cart.addToCart('${product.id}','${product.name.replace(/'/g,"\\'")}',${product.price},'${product.image}')">
+              Add to Cart
+            </button>
+            <button class="wishlist-btn pd-wishlist-btn" data-id="${product.id}" aria-label="Add to wishlist" style="position: static; flex-shrink: 0; width: 50px; height: 50px; border-radius: 12px; display: flex; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1); background: rgba(255,255,255,0.05); color: #fff; cursor: pointer; transition: all 0.3s;">
+              <i class="fa-regular fa-heart" style="font-size: 20px;"></i>
+            </button>
+          </div>
         </div>
       `;
+      if (window.Wishlist) window.Wishlist.initWishlistButtons();
     }
   } catch (e) { console.error(e); }
 }

@@ -210,3 +210,53 @@ input[type="range"] {
   background-color: var(--clr-brand-light);
   box-shadow: inset 0 0 10px rgba(255,255,255,0.1);
 }
+
+/* ── Wishlist Buttons ────────────────────────────────────────────────────────── */
+.wishlist-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 10;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(35, 36, 67, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.wishlist-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: scale(1.1);
+  color: #ff4d4d;
+}
+
+.wishlist-btn.active {
+  color: #ff4d4d;
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 77, 77, 0.3);
+}
+
+.pd-wishlist-btn {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+}
+
+.pd-wishlist-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #ff4d4d;
+}
+
+.pd-wishlist-btn.active {
+  color: #ff4d4d;
+  background: rgba(255, 77, 77, 0.1);
+  border-color: rgba(255, 77, 77, 0.3);
+}

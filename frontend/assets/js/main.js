@@ -249,3 +249,116 @@ function showNewsletterSuccess(form) {
   });
 })();
 
+// ── Wishlist Module ───────────────────────────────────────────────────────────
+(function initWishlistModule() {
+  const WISHLIST_KEY = 'dailycore_wishlist';
+
+  function getWishlist() {
+    return JSON.parse(localStorage.getItem(WISHLIST_KEY) || '[]');
+  }
+
+  function saveWishlist(wishlist) {
+    localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+  }
+
+  function toggleWishlist(productId) {
+    let wishlist = getWishlist();
+    const index = wishlist.indexOf(productId);
+    let msgText = '';
+    
+    if (index === -1) {
+      wishlist.push(productId);
+      msgText = '✓ Added to wishlist';
+    } else {
+      wishlist.splice(index, 1);
+      msgText = 'Removed from wishlist';
+    }
+    
+    saveWishlist(wishlist);
+    updateWishlistIcons(productId);
+    showWishlistNotification(msgText);
+  }
+
+  function updateWishlistIcons(productId) {
+    const wishlist = getWishlist();
+    const isWishlisted = wishlist.includes(productId);
+    
+    document.querySelectorAll(`.wishlist-btn[data-id="${productId}"]`).forEach(btn => {
+      const icon = btn.querySelector('i');
+      if (icon) {
+        if (isWishlisted) {
+          icon.className = 'fa-solid fa-heart';
+          btn.classList.add('active');
+        } else {
+          icon.className = 'fa-regular fa-heart';
+          btn.classList.remove('active');
+        }
+      }
+    });
+  }
+
+  function initWishlistButtons() {
+    const wishlist = getWishlist();
+    document.querySelectorAll('.wishlist-btn').forEach(btn => {
+      const id = btn.getAttribute('data-id');
+      const icon = btn.querySelector('i');
+      if (id && icon) {
+        if (wishlist.includes(id)) {
+          icon.className = 'fa-solid fa-heart';
+          btn.classList.add('active');
+        } else {
+          icon.className = 'fa-regular fa-heart';
+          btn.classList.remove('active');
+        }
+      }
+      
+      if (!btn.dataset.listened) {
+        btn.dataset.listened = 'true';
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          toggleWishlist(id);
+        });
+      }
+    });
+  }
+
+  function showWishlistNotification(text) {
+    let toast = document.getElementById('wishlist-toast');
+    if (!toast) {
+      toast = document.createElement('div');
+      toast.id = 'wishlist-toast';
+      toast.style.cssText = `
+        position: fixed; bottom: 30px; left: 30px; z-index: 99999;
+        background: var(--clr-brand); color: white; padding: 14px 22px;
+        border-radius: 12px; font-size: 15px; font-weight: 600;
+        box-shadow: 0 4px 20px rgba(0,0,0,.3);
+        transform: translateY(100px); opacity: 0;
+        transition: all .35s cubic-bezier(.34,1.56,.64,1);
+        pointer-events: none;
+      `;
+      document.body.appendChild(toast);
+    }
+    toast.textContent = text;
+    toast.style.transform = 'translateY(0)';
+    toast.style.opacity = '1';
+    clearTimeout(window._wishlistToastTimer);
+    window._wishlistToastTimer = setTimeout(() => {
+      toast.style.transform = 'translateY(100px)';
+      toast.style.opacity = '0';
+    }, 2800);
+  }
+
+  // Hook into DOM load
+  document.addEventListener('DOMContentLoaded', () => {
+    initWishlistButtons();
+  });
+
+  window.Wishlist = {
+    getWishlist,
+    toggleWishlist,
+    initWishlistButtons,
+    updateWishlistIcons
+  };
+})();
+
