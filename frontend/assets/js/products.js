@@ -14,14 +14,26 @@ function fixImagePath(imagePath) {
   return imagePath;
 }
 
+// Helper to determine product detail page url dynamically
+function fixProductDetailPath(productId) {
+  const isSubpage = window.location.pathname.includes('/pages/');
+  if (isSubpage) {
+    return `product-details.html?id=${productId}`;
+  }
+  return `pages/product-details.html?id=${productId}`;
+}
+
 // ── Card Builder ──────────────────────────────────────────────────────────────
 
 function buildProductCard(product) {
+  const detailUrl = fixProductDetailPath(product.id);
   return `
     <div class="product-card" data-price="${product.price}" data-id="${product.id}">
-      <img src="${fixImagePath(product.image)}" alt="${product.name}" loading="lazy">
-      <div class="overlay-text">Quick View</div>
-      <h3>${product.name}</h3>
+      <a href="${detailUrl}" style="text-decoration: none; color: inherit; display: block;">
+        <img src="${fixImagePath(product.image)}" alt="${product.name}" loading="lazy">
+        <div class="overlay-text">View Details</div>
+        <h3>${product.name}</h3>
+      </a>
       <p class="price">₹${product.price.toLocaleString('en-IN')}</p>
       <button onclick="Cart.addToCart('${product.id}', '${product.name.replace(/'/g,"\\'")}', ${product.price}, '${product.image}')">
         Add to Cart
@@ -50,6 +62,22 @@ async function renderProducts(containerId, category = 'all') {
       case 'newin':      products = await API.getNewArrivals();    break;
       case 'sale':       products = await API.getSaleProducts();   break;
       default:           products = await API.getProductsByCategory(category);
+    }
+
+    // Check for search query parameter in URL
+    const params = new URLSearchParams(window.location.search);
+    const searchQuery = params.get('search');
+    if (searchQuery) {
+      const q = searchQuery.toLowerCase().trim();
+      products = products.filter(p => 
+        p.name.toLowerCase().includes(q) || 
+        p.categories.some(c => c.toLowerCase().includes(q))
+      );
+      
+      const pageHeader = document.querySelector('.product-grid h1');
+      if (pageHeader) {
+        pageHeader.textContent = `Search Results for "${searchQuery}"`;
+      }
     }
 
     if (products.length === 0) {

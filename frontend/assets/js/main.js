@@ -50,12 +50,93 @@ window.addEventListener('load', () => {
 (function highlightActiveNavLink() {
   const currentPath = window.location.pathname.split('/').pop();
   document.querySelectorAll('.navbar .navbardiv ul li a').forEach(link => {
-    const href = link.getAttribute('href').split('/').pop();
+    const hrefAttr = link.getAttribute('href');
+    if (!hrefAttr) return;
+    const href = hrefAttr.split('/').pop();
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
       link.classList.add('active-link');
     }
   });
 })();
+
+// ── Global Search Bar Handler ────────────────────────────────────────────────
+
+(function initSearchBar() {
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.searchbar-form').forEach(form => {
+      const input = form.querySelector('.searchbar');
+      const btn = form.querySelector('.submit');
+
+      function handleSearch() {
+        if (!input || !input.value.trim()) return;
+        const query = encodeURIComponent(input.value.trim());
+        const isSubpage = window.location.pathname.includes('/pages/');
+        const targetUrl = isSubpage 
+          ? `categories.html?search=${query}` 
+          : `pages/categories.html?search=${query}`;
+        window.location.href = targetUrl;
+      }
+
+      form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        handleSearch();
+      });
+
+      if (btn) {
+        btn.type = 'submit';
+      }
+    });
+  });
+})();
+
+// ── Contact & Checkout Form Completion Interceptors ──────────────────────────
+
+document.addEventListener('DOMContentLoaded', () => {
+  // Contact Form
+  const contactForm = document.querySelector('.contact-form-el');
+  if (contactForm && !window.location.pathname.includes('checkout.html')) {
+    contactForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const firstNameVal = document.getElementById('first-name')?.value || '';
+      contactForm.innerHTML = `
+        <div style="text-align:center; padding: 40px 20px; color: white;">
+          <i class="fa-solid fa-circle-check" style="font-size: 60px; color: #e5c07b; margin-bottom: 20px;"></i>
+          <h2 style="font-family: var(--font-serif); margin-bottom: 10px;">Message Sent!</h2>
+          <p style="color: var(--clr-text-muted); font-size: 16px;">
+            Thank you, ${firstNameVal}! We have received your message and will get back to you shortly.
+          </p>
+        </div>
+      `;
+    });
+  }
+
+  // Checkout Form
+  const checkoutForm = document.querySelector('main .contact-container form.contact-form-el');
+  if (checkoutForm && window.location.pathname.includes('checkout.html')) {
+    checkoutForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const firstNameVal = document.getElementById('checkout-first')?.value || '';
+      if (window.Cart) {
+        window.Cart.clearCart();
+      }
+      const container = document.querySelector('main .contact-container');
+      if (container) {
+        container.innerHTML = `
+          <div style="text-align:center; padding: 60px 40px; background: rgba(35, 36, 67, 0.25); border: 1px solid rgba(255, 255, 255, 0.08); border-radius: var(--radius-lg); backdrop-filter: blur(16px); color: white; box-shadow: 0 8px 32px rgba(0,0,0,0.3);">
+            <i class="fa-solid fa-circle-check" style="font-size: 80px; color: #e5c07b; margin-bottom: 25px;"></i>
+            <h1 style="font-family: var(--font-serif); margin-bottom: 15px;">Order Placed Successfully!</h1>
+            <p style="color: var(--clr-text-muted); font-size: 18px; margin-bottom: 30px;">
+              Thank you for shopping with us, ${firstNameVal}! Your order has been placed and will be processed soon.
+            </p>
+            <a href="../index.html" class="submit-btn" style="text-decoration:none; padding: 12px 35px; border-radius: 25px; font-weight:700; display: inline-block;">
+              Return to Home
+            </a>
+          </div>
+        `;
+      }
+    });
+  }
+});
 
 // ── Newsletter Form Handler ───────────────────────────────────────────────────
 
