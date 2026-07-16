@@ -1,19 +1,110 @@
-﻿/* product-details.css */
-body { display:flex; flex-direction:column; min-height:100vh; }
-main { flex:1; margin:100px 30px 60px; }
+/* product-details.css */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+  margin: 120px 30px 60px;
+}
+
 #product-detail {
-  display:flex; gap:50px; align-items:flex-start;
-  max-width:1000px; margin:0 auto;
+  display: flex;
+  gap: 50px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.pd-image img { width:450px; border-radius:12px; object-fit:cover; }
-.pd-info { flex:1; color:white; }
-.pd-info h1  { font-size:1.8em; margin-bottom:12px; }
-.pd-price    { font-size:1.5em; color:#9d60ec; font-weight:700; margin-bottom:20px; }
-.pd-desc     { color:#ccc; line-height:1.7; margin-bottom:30px; font-size:1em; }
-.pd-add-btn  {
-  background:#8037de; color:white; border:none;
-  padding:14px 40px; border-radius:25px;
-  font-size:1.1em; font-weight:700; cursor:pointer;
-  font-family:inherit; transition:background .2s, transform .2s;
+
+.pd-image {
+  flex-shrink: 0;
 }
-.pd-add-btn:hover { background:#5f24b0; transform:translateY(-2px); }
+
+.pd-image img {
+  width: 450px;
+  border-radius: 12px;
+  object-fit: cover;
+  display: block;
+}
+
+.pd-info {
+  flex: 1;
+  color: white;
+}
+
+.pd-info h1 {
+  font-family: var(--font-serif);
+  font-size: 2.2em;
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+
+.pd-price {
+  font-size: 1.8em;
+  color: var(--clr-accent);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.pd-desc {
+  color: var(--clr-text-muted);
+  line-height: 1.7;
+  margin-bottom: 30px;
+  font-size: 16px;
+}
+
+.pd-add-btn {
+  background: var(--clr-brand);
+  color: white;
+  border: none;
+  padding: 14px 40px;
+  border-radius: 25px;
+  font-size: 1.1em;
+  font-weight: 700;
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pd-add-btn:hover {
+  background: var(--clr-brand-light);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
+}
+
+/* ── Product Details Responsiveness ───────────────────────────────────────── */
+@media (max-width: 768px) {
+  main {
+    margin: 130px 20px 40px;
+  }
+  
+  #product-detail {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .pd-image {
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .pd-image img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+  }
+  
+  .pd-info {
+    width: 100%;
+    text-align: center;
+  }
+  
+  .pd-info h1 {
+    font-size: 1.8em;
+  }
+}

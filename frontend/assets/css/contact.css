@@ -152,3 +152,31 @@ input:focus, textarea:focus {
   transform: translateY(-2px);
   box-shadow: 0 6px 15px rgba(157, 96, 236, 0.3);
 }
+
+/* ── Contact Mobile Responsiveness ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  main {
+    margin: 130px 0 40px;
+  }
+  
+  .contact-container {
+    flex-direction: column;
+    gap: 40px;
+    padding: 0 15px;
+  }
+  
+  .contact-dailycore, .contact-form {
+    width: 100%;
+    padding: 24px;
+    box-sizing: border-box;
+  }
+
+  .contact-dailycore h1, .contact-form h1 {
+    font-size: 28px;
+  }
+
+  .form-row {
+    flex-direction: column;
+    gap: 0;
+  }
+}
