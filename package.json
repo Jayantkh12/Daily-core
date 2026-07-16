@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "nodemon backend/server.js",
     "start": "node backend/server.js",
-    "build": "cp -rf frontend/* ."
+    "build": "mkdir -p public && cp -rf frontend/* public/"
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",
