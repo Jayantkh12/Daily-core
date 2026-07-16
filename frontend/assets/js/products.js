@@ -173,7 +173,7 @@ async function renderProductDetail() {
 
   try {
     const product = await API.getProductById(id);
-    if (!product) { document.getElementById('product-detail')?.innerHTML = '<p>Product not found.</p>'; return; }
+    if (!product) { const detailEl = document.getElementById('product-detail'); if (detailEl) detailEl.innerHTML = '<p>Product not found.</p>'; return; }
 
     document.title = `${product.name} — DAILYCORE`;
     const el = document.getElementById('product-detail');
