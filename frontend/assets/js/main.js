@@ -203,6 +203,7 @@ function showNewsletterSuccess(form) {
           <div class="user-dropdown-phone">${userData.phone || '7850078064'}</div>
         </div>
         <div class="user-dropdown-section">
+          <a href="#">My Orders</a>
           <a href="${resolvePath('contact.html')}">Contact Us</a>
         </div>
         <div class="user-dropdown-section">
