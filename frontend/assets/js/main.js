@@ -203,21 +203,9 @@ function showNewsletterSuccess(form) {
           <div class="user-dropdown-phone">${userData.phone || '7850078064'}</div>
         </div>
         <div class="user-dropdown-section">
-          <a href="#">Orders</a>
-          <a href="#">Wishlist</a>
-          <a href="#">Gift Cards</a>
           <a href="${resolvePath('contact.html')}">Contact Us</a>
-          <a href="#">DAILYCORE Insider <span class="insider-badge">New</span></a>
         </div>
         <div class="user-dropdown-section">
-          <a href="#">DAILYCORE Credit</a>
-          <a href="#">Coupons</a>
-          <a href="#">Saved Cards</a>
-          <a href="#">Saved VPA</a>
-          <a href="#">Saved Addresses</a>
-        </div>
-        <div class="user-dropdown-section">
-          <a href="#">Edit Profile</a>
           <a href="#" class="logout-btn" id="nav-logout-btn">Logout</a>
         </div>
       </div>
