@@ -64,6 +64,11 @@ async function renderProducts(containerId, category = 'all') {
       case 'bestseller': products = await API.getBestSellers();    break;
       case 'newin':      products = await API.getNewArrivals();    break;
       case 'sale':       products = await API.getSaleProducts();   break;
+      case 'wishlist':
+        const wishlistIds = window.Wishlist ? window.Wishlist.getWishlist() : [];
+        const allProducts = await API.getProducts();
+        products = allProducts.filter(p => wishlistIds.includes(p.id));
+        break;
       default:           products = await API.getProductsByCategory(category);
     }
 

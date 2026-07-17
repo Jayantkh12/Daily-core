@@ -247,6 +247,25 @@ function showNewsletterSuccess(form) {
 
   function saveWishlist(wishlist) {
     localStorage.setItem(WISHLIST_KEY, JSON.stringify(wishlist));
+    updateWishlistBadge();
+  }
+
+  function updateWishlistBadge() {
+    const wishlist = getWishlist();
+    const count = wishlist.length;
+    const badge = document.getElementById('wishlist-badge');
+    if (badge) {
+      badge.textContent = count > 0 ? count : '';
+      badge.style.display = count > 0 ? 'inline-block' : 'none';
+    }
+    const heartIcon = document.querySelector('#wishlist-link i');
+    if (heartIcon) {
+      if (count > 0) {
+        heartIcon.className = 'fa-solid fa-heart';
+      } else {
+        heartIcon.className = 'fa-regular fa-heart';
+      }
+    }
   }
 
   function toggleWishlist(productId) {
@@ -340,13 +359,15 @@ function showNewsletterSuccess(form) {
   // Hook into DOM load
   document.addEventListener('DOMContentLoaded', () => {
     initWishlistButtons();
+    updateWishlistBadge();
   });
 
   window.Wishlist = {
     getWishlist,
     toggleWishlist,
     initWishlistButtons,
-    updateWishlistIcons
+    updateWishlistIcons,
+    updateWishlistBadge
   };
 })();
 
@@ -370,6 +391,17 @@ function showNewsletterSuccess(form) {
     const originalUl = navbarDiv.querySelector('ul');
     if (originalUl) {
       const clonedUl = originalUl.cloneNode(true);
+      
+      // Wire up mobile dropdown trigger collapses
+      clonedUl.querySelectorAll('.nav-dropdown-trigger').forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+          e.preventDefault();
+          e.stopPropagation();
+          const parent = trigger.parentElement;
+          parent.classList.toggle('active');
+        });
+      });
+      
       mobileMenu.appendChild(clonedUl);
     }
 

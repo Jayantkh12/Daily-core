@@ -145,6 +145,15 @@
         // State variables
         let isLoginMode = false; // toggles between Login and Register modes
         
+        // Read mode from query parameters if present
+        const urlParams = new URLSearchParams(window.location.search);
+        const modeParam = urlParams.get('mode');
+        if (modeParam === 'login') {
+            isLoginMode = true;
+        } else if (modeParam === 'signup') {
+            isLoginMode = false;
+        }
+        
         // Element bindings
         const authTitle = document.getElementById('auth-title');
         const authSubtitle = document.getElementById('auth-subtitle');
