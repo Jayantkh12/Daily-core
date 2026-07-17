@@ -8,6 +8,9 @@
  *   const product  = await API.getProductById('p001');
  */
 
+// Cache isSubpage status for subsequent JS files
+window.isSubpage = window.location.pathname.includes('/pages/');
+
 const API_BASE_URL = '/api'; // Switch to this when backend is live
 
 // Determine the correct path to products.json based on page location

@@ -7,8 +7,7 @@
 // Helper to fix image paths when loaded from index.html (root level of frontend)
 function fixImagePath(imagePath) {
   if (!imagePath) return '';
-  const isSubpage = window.location.pathname.includes('/pages/');
-  if (!isSubpage && imagePath.startsWith('../')) {
+  if (!window.isSubpage && imagePath.startsWith('../')) {
     return imagePath.replace(/^\.\.\//, ''); // Remove leading "../" -> "public/images/..."
   }
   return imagePath;
@@ -16,8 +15,7 @@ function fixImagePath(imagePath) {
 
 // Helper to determine product detail page url dynamically
 function fixProductDetailPath(productId) {
-  const isSubpage = window.location.pathname.includes('/pages/');
-  if (isSubpage) {
+  if (window.isSubpage) {
     return `product-details.html?id=${productId}`;
   }
   return `pages/product-details.html?id=${productId}`;

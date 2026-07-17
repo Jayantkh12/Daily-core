@@ -70,8 +70,7 @@ window.addEventListener('load', () => {
       function handleSearch() {
         if (!input || !input.value.trim()) return;
         const query = encodeURIComponent(input.value.trim());
-        const isSubpage = window.location.pathname.includes('/pages/');
-        const targetUrl = isSubpage 
+        const targetUrl = window.isSubpage 
           ? `categories.html?search=${query}` 
           : `pages/categories.html?search=${query}`;
         window.location.href = targetUrl;
@@ -187,8 +186,7 @@ function showNewsletterSuccess(form) {
     liParent.className = 'user-profile-menu';
 
     function resolvePath(filename) {
-      const isSubpage = window.location.pathname.includes('/pages/');
-      return isSubpage ? filename : `pages/${filename}`;
+      return window.isSubpage ? filename : `pages/${filename}`;
     }
 
     liParent.innerHTML = `
